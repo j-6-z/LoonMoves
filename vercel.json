@@ -9,7 +9,6 @@
     { "src": "/free-quote", "dest": "/freequote.html" },
     { "src": "/policy",     "dest": "/policy.html" },
     { "src": "/404",        "dest": "/404.html" },
-    { "handle": "error" },
-    { "status": 404, "dest": "/404.html" }
+    { "src": "/(.*)",       "dest": "/404.html", "status": 404 }
   ]
 }
