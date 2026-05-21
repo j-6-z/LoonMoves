@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found · Looney Movers Saskatoon</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #E8192C;
+  --yellow: #FFD700;
+  --black: #1a1a1a;
+  --white: #FFFEF0;
+  --orange: #FF6B00;
+  --sky: #87CEEB;
+  --green: #5D8A3C;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Comic Neue', cursive;
+  background: var(--sky);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  background: var(--red);
+  border-bottom: 4px solid var(--black);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--white); }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a {
+  font-family: 'Bangers', cursive;
+  font-size: 1.15rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.1s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--yellow); }
+.nav-cta {
+  background: var(--yellow) !important;
+  color: var(--black) !important;
+  padding: 8px 18px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 3px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.nav-cta:hover { transform: translate(-2px,-2px) !important; box-shadow: 5px 5px 0 var(--black) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+  z-index: 1100;
+}
+.hamburger span { display: block; width: 28px; height: 3px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px; left: 0; right: 0; bottom: 0;
+  background: var(--red);
+  border-top: 4px solid var(--black);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+  color: var(--white);
+  text-decoration: none;
+  text-shadow: 3px 3px 0 var(--black);
+}
+.mobile-menu a:hover { color: var(--yellow); }
+.mobile-menu .mob-cta {
+  background: var(--yellow);
+  color: var(--black) !important;
+  padding: 14px 36px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 5px 5px 0 var(--black);
+  text-shadow: none !important;
+}
+
+/* ===== SCENE ===== */
+.scene {
+  background: var(--sky);
+  min-height: calc(100vh - 70px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem 160px;
+  text-align: center;
+}
+
+/* Ground */
+.ground {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 130px;
+  background: var(--green);
+  border-top: 4px solid var(--black);
+  z-index: 1;
+}
+
+/* Road stripe */
+.road {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 55px;
+  background: #333;
+  border-top: 4px solid var(--black);
+  z-index: 2;
+}
+.road::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: -100%;
+  width: 300%;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, var(--yellow) 0, var(--yellow) 60px, transparent 60px, transparent 100px);
+  transform: translateY(-50%);
+  animation: road-scroll 1s linear infinite;
+}
+@keyframes road-scroll { from { left: -100%; } to { left: -80%; } }
+
+/* Clouds */
+.cloud {
+  position: absolute;
+  background: white;
+  border: 3px solid var(--black);
+  border-radius: 50px;
+  animation: float 6s ease-in-out infinite;
+  z-index: 2;
+}
+.cloud::before, .cloud::after {
+  content: '';
+  position: absolute;
+  background: white;
+  border: 3px solid var(--black);
+  border-radius: 50%;
+}
+.cloud-1 { width: 120px; height: 45px; top: 8%; left: 6%; }
+.cloud-1::before { width: 58px; height: 55px; top: -28px; left: 14px; }
+.cloud-1::after  { width: 44px; height: 44px; top: -18px; left: 54px; }
+.cloud-2 { width: 80px; height: 30px; top: 15%; right: 10%; animation-delay: 2s; }
+.cloud-2::before { width: 38px; height: 38px; top: -20px; left: 8px; }
+.cloud-2::after  { width: 28px; height: 28px; top: -12px; left: 34px; }
+.cloud-3 { width: 100px; height: 38px; top: 5%; right: 30%; animation-delay: 4s; }
+.cloud-3::before { width: 48px; height: 46px; top: -24px; left: 12px; }
+.cloud-3::after  { width: 36px; height: 36px; top: -15px; left: 46px; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Dust puffs behind truck */
+.dust {
+  position: absolute;
+  bottom: 72px;
+  left: -60px;
+  z-index: 3;
+}
+.dust-puff {
+  display: inline-block;
+  width: 28px; height: 28px;
+  background: rgba(255,255,255,0.7);
+  border: 2px solid rgba(0,0,0,0.15);
+  border-radius: 50%;
+  animation: puff 1.2s ease-out infinite;
+}
+.dust-puff:nth-child(2) { width: 20px; height: 20px; animation-delay: 0.2s; margin-left: -10px; }
+.dust-puff:nth-child(3) { width: 14px; height: 14px; animation-delay: 0.4s; margin-left: -8px; }
+@keyframes puff {
+  0%   { transform: scale(1) translateY(0); opacity: 0.7; }
+  100% { transform: scale(2.5) translateY(-20px); opacity: 0; }
+}
+
+/* Truck driving off screen */
+.truck-gone {
+  position: absolute;
+  bottom: 52px;
+  right: -20px;
+  width: 280px;
+  z-index: 4;
+  animation: drive-off 3s ease-in forwards, truck-bounce-small 0.35s ease-in-out infinite alternate;
+  transform-origin: center bottom;
+}
+@keyframes drive-off {
+  0%   { right: 8%; }
+  70%  { right: 8%; }
+  100% { right: -320px; }
+}
+@keyframes truck-bounce-small {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-4px); }
+}
+
+/* Speed lines from truck */
+.speed-lines {
+  position: absolute;
+  bottom: 80px;
+  right: 300px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: lines-fade 3s ease-in forwards;
+}
+@keyframes lines-fade {
+  0%, 60% { opacity: 1; }
+  100%     { opacity: 0; }
+}
+.speed-line {
+  height: 3px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 2px;
+}
+
+/* ===== 404 CONTENT ===== */
+.content-wrap {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.error-code {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(7rem, 20vw, 14rem);
+  color: var(--red);
+  text-shadow:
+    6px 6px 0 var(--black),
+    9px 9px 0 var(--yellow);
+  line-height: 0.9;
+  letter-spacing: 6px;
+  animation: wobble 3s ease-in-out infinite;
+}
+@keyframes wobble {
+  0%, 100% { transform: rotate(-1deg) scale(1); }
+  50%       { transform: rotate(1deg) scale(1.02); }
+}
+
+.starburst {
+  position: absolute;
+  top: -20px; right: -30px;
+  font-family: 'Bangers', cursive;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  background: var(--yellow);
+  color: var(--black);
+  border: 3px solid var(--black);
+  border-radius: 50%;
+  width: 80px; height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 3px 3px 0 var(--black);
+  animation: wiggle 2s ease-in-out infinite;
+  z-index: 11;
+}
+.starburst::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: var(--yellow);
+  border: 3px solid var(--black);
+  border-radius: 50%;
+  z-index: -1;
+  clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg) scale(1); }
+  50%       { transform: rotate(5deg) scale(1.06); }
+}
+
+.error-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--black);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--red);
+  line-height: 1;
+}
+
+.error-sub {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--black);
+  background: var(--white);
+  border: 3px solid var(--black);
+  padding: 10px 20px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 4px 0 var(--black);
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+/* Quick links */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.quick-link {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-decoration: none;
+  padding: 10px 22px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 4px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+  white-space: nowrap;
+}
+.quick-link:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--black); }
+.ql-home     { background: var(--red);    color: var(--white); }
+.ql-services { background: var(--yellow); color: var(--black); }
+.ql-quote    { background: var(--black);  color: var(--yellow); animation: pulse-btn 2s ease-in-out infinite; }
+.ql-quote:hover { animation: none; }
+@keyframes pulse-btn { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+
+/* Countdown redirect */
+.redirect-note {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(0,0,0,0.45);
+  margin-top: 0.25rem;
+}
+.redirect-note span { color: var(--red); font-family: 'Bangers', cursive; font-size: 1rem; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--black);
+  border-top: 5px solid var(--yellow);
+  color: var(--white);
+}
+.footer-bottom {
+  padding: 1.4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,240,0.4); }
+.footer-legal { display: flex; gap: 1.5rem; }
+.footer-legal a { font-size: 0.8rem; color: rgba(255,255,240,0.4); text-decoration: none; }
+.footer-legal a:hover { color: var(--yellow); }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .scene { padding: 2rem 1.25rem 140px; }
+  .error-code { font-size: clamp(5rem, 25vw, 9rem); }
+  .starburst { width: 64px; height: 64px; font-size: 0.65rem; top: -12px; right: -16px; }
+  .cloud-3 { display: none; }
+  .truck-gone { width: 210px; }
+  .quick-links { flex-direction: column; align-items: center; }
+}
+@media (max-width: 480px) {
+  nav { padding: 0 1rem; }
+  .nav-logo { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">LOONEY<span>MOVERS</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="whyus.html">Why Us</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="freequote.html" class="nav-cta">FREE QUOTE</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="services.html"  class="mob-link">Services</a>
+  <a href="whyus.html"     class="mob-link">Why Us</a>
+  <a href="reviews.html"   class="mob-link">Reviews</a>
+  <a href="freequote.html" class="mob-cta mob-link">FREE QUOTE</a>
+</div>
+
+<!-- SCENE -->
+<div class="scene">
+  <!-- Sky elements -->
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+
+  <!-- Truck driving away -->
+  <div class="speed-lines">
+    <div class="speed-line" style="width:80px"></div>
+    <div class="speed-line" style="width:120px"></div>
+    <div class="speed-line" style="width:60px"></div>
+    <div class="speed-line" style="width:100px"></div>
+  </div>
+
+  <div class="truck-gone" aria-hidden="true">
+    <svg viewBox="0 0 340 160" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="30" width="240" height="100" rx="10" fill="#E8192C" stroke="#1a1a1a" stroke-width="4"/>
+      <rect x="240" y="50" width="90" height="80" rx="10" fill="#FF6B00" stroke="#1a1a1a" stroke-width="4"/>
+      <rect x="255" y="60" width="55" height="40" rx="6" fill="#87CEEB" stroke="#1a1a1a" stroke-width="3"/>
+      <line x1="260" y1="65" x2="268" y2="80" stroke="white" stroke-width="2" opacity="0.6"/>
+      <text x="100" y="90" font-family="Bangers,cursive" font-size="22" fill="#FFD700" text-anchor="middle" stroke="#1a1a1a" stroke-width="1" paint-order="stroke">LOONEY MOVERS</text>
+      <text x="100" y="108" font-family="Comic Neue,cursive" font-size="10" fill="white" text-anchor="middle" font-weight="700">GONE THE WRONG WAY</text>
+      <circle cx="60"  cy="138" r="22" fill="#1a1a1a"/><circle cx="60"  cy="138" r="12" fill="#888" stroke="#1a1a1a" stroke-width="2"/><circle cx="60"  cy="138" r="4" fill="#1a1a1a"/>
+      <circle cx="185" cy="138" r="22" fill="#1a1a1a"/><circle cx="185" cy="138" r="12" fill="#888" stroke="#1a1a1a" stroke-width="2"/><circle cx="185" cy="138" r="4" fill="#1a1a1a"/>
+      <circle cx="290" cy="138" r="22" fill="#1a1a1a"/><circle cx="290" cy="138" r="12" fill="#888" stroke="#1a1a1a" stroke-width="2"/><circle cx="290" cy="138" r="4" fill="#1a1a1a"/>
+      <rect x="328" y="90" width="10" height="16" rx="3" fill="#FFD700" stroke="#1a1a1a" stroke-width="2"/>
+    </svg>
+  </div>
+
+  <div class="dust">
+    <span class="dust-puff"></span>
+    <span class="dust-puff"></span>
+    <span class="dust-puff"></span>
+  </div>
+
+  <!-- Ground + road -->
+  <div class="ground"></div>
+  <div class="road"></div>
+
+  <!-- Main content -->
+  <div class="content-wrap">
+    <div style="position:relative; display:inline-block;">
+      <div class="error-code">404</div>
+      <div class="starburst">OOPS!<br>WRONG<br>TURN!</div>
+    </div>
+
+    <h1 class="error-title">THE TRUCK WENT THE WRONG WAY</h1>
+
+    <p class="error-sub">Looks like this page packed up and moved out. Don't worry — our crew doesn't actually get lost. Let's get you back on track.</p>
+
+    <div class="quick-links">
+      <a href="index.html"     class="quick-link ql-home">🏠 HOME</a>
+      <a href="services.html"  class="quick-link ql-services">🚛 SERVICES</a>
+      <a href="freequote.html" class="quick-link ql-quote">GET A FREE QUOTE →</a>
+    </div>
+
+    <p class="redirect-note">Taking you home in <span id="countdown">10</span> seconds...</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bottom">
+    <p>© 2025 Looney Movers · Saskatoon, SK · All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="policy.html">Privacy Policy</a>
+      <a href="policy.html">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Countdown redirect
+  let count = 10;
+  const el = document.getElementById('countdown');
+  const timer = setInterval(() => {
+    count--;
+    el.textContent = count;
+    if (count <= 0) {
+      clearInterval(timer);
+      window.location.href = 'index.html';
+    }
+  }, 1000);
+</script>
+</body>
+</html>

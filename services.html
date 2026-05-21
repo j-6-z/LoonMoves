@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Looney Movers Saskatoon</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #E8192C;
+  --yellow: #FFD700;
+  --black: #1a1a1a;
+  --white: #FFFEF0;
+  --orange: #FF6B00;
+  --sky: #87CEEB;
+  --green: #5D8A3C;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Comic Neue', cursive;
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  background: var(--red);
+  border-bottom: 4px solid var(--black);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--white); }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a {
+  font-family: 'Bangers', cursive;
+  font-size: 1.15rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.1s;
+  white-space: nowrap;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--yellow); }
+.nav-cta {
+  background: var(--yellow) !important;
+  color: var(--black) !important;
+  padding: 8px 18px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 3px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.nav-cta:hover { transform: translate(-2px,-2px) !important; box-shadow: 5px 5px 0 var(--black) !important; }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+  z-index: 1100;
+}
+.hamburger span { display: block; width: 28px; height: 3px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px; left: 0; right: 0; bottom: 0;
+  background: var(--red);
+  border-top: 4px solid var(--black);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+  color: var(--white);
+  text-decoration: none;
+  text-shadow: 3px 3px 0 var(--black);
+}
+.mobile-menu a:hover { color: var(--yellow); }
+.mobile-menu .mob-cta {
+  background: var(--yellow);
+  color: var(--black) !important;
+  padding: 14px 36px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 5px 5px 0 var(--black);
+  text-shadow: none !important;
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  background: var(--red);
+  border-bottom: 4px solid var(--black);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '🚛 🚛 🚛';
+  position: absolute;
+  font-size: 8rem;
+  opacity: 0.04;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.page-hero-eyebrow {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  color: var(--orange);
+  background: var(--black);
+  display: inline-block;
+  padding: 4px 16px;
+  margin-bottom: 1rem;
+}
+.page-hero h1 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 4px 4px 0 var(--black);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.page-hero p {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255,255,240,0.85);
+  max-width: 600px;
+  margin: 0 auto 1.8rem;
+  line-height: 1.5;
+}
+.btn-primary {
+  font-family: 'Bangers', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  background: var(--yellow);
+  color: var(--black);
+  border: 3px solid var(--black);
+  padding: 13px 32px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 5px 5px 0 var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  transition: transform 0.1s, box-shadow 0.1s;
+  white-space: nowrap;
+}
+.btn-primary:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--black); }
+
+.btn-outline {
+  font-family: 'Bangers', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  background: transparent;
+  color: var(--yellow);
+  border: 3px solid var(--yellow);
+  padding: 13px 32px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 5px 5px 0 rgba(255,215,0,0.4);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.1s;
+  white-space: nowrap;
+}
+.btn-outline:hover { transform: translate(-3px,-3px); background: rgba(255,215,0,0.1); box-shadow: 8px 8px 0 rgba(255,215,0,0.4); }
+
+/* ===== MARQUEE ===== */
+.marquee-strip {
+  background: var(--yellow);
+  border-top: 4px solid var(--black);
+  border-bottom: 4px solid var(--black);
+  padding: 9px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-inner {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  color: var(--black);
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ===== SERVICE CARDS ===== */
+.services-section { padding: 5rem 2rem; background: var(--white); }
+
+.section-label {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 3px;
+  text-align: center;
+  color: var(--black);
+  text-shadow: 3px 3px 0 var(--red);
+  margin-bottom: 0.4rem;
+}
+.section-sub {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  font-weight: 700;
+  margin-bottom: 3.5rem;
+}
+
+.service-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  max-width: 1100px;
+  margin: 0 auto 5rem;
+  border: 3px solid var(--black);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 8px 8px 0 var(--black);
+}
+.service-block.reverse { direction: rtl; }
+.service-block.reverse > * { direction: ltr; }
+
+.service-visual {
+  background: var(--sky);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  border-right: 3px solid var(--black);
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+}
+.service-block.reverse .service-visual { border-right: none; border-left: 3px solid var(--black); }
+
+.service-visual.red-bg    { background: #FFF0F0; }
+.service-visual.yellow-bg { background: #FFFBE6; }
+.service-visual.blue-bg   { background: #EBF5FF; }
+.service-visual.green-bg  { background: #EFF7E8; }
+.service-visual.purple-bg { background: #F3EEFF; }
+.service-visual.orange-bg { background: #FFF4E6; }
+
+.service-emoji {
+  font-size: clamp(6rem, 12vw, 9rem);
+  animation: icon-float 3s ease-in-out infinite;
+  display: block;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+}
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%       { transform: translateY(-14px) rotate(3deg); }
+}
+
+.service-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  font-family: 'Bangers', cursive;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  background: var(--yellow);
+  color: var(--black);
+  border: 2px solid var(--black);
+  padding: 5px 12px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 2px 2px 0 var(--black);
+}
+
+.service-info {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+.service-info h2 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  letter-spacing: 2px;
+  color: var(--red);
+  text-shadow: 3px 3px 0 var(--black);
+  line-height: 1;
+}
+.service-info .desc {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #333;
+  font-weight: 700;
+}
+.service-includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin: 0.25rem 0;
+}
+.service-includes li {
+  font-size: 0.92rem;
+  color: #222;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.4;
+}
+.service-includes li::before {
+  content: '✔';
+  color: var(--green);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.service-price {
+  display: inline-block;
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  background: #FFF9E6;
+  border: 2px solid var(--black);
+  padding: 8px 18px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 3px 0 var(--black);
+  color: var(--black);
+  align-self: flex-start;
+}
+.service-price span { color: var(--red); }
+
+/* ===== PRICING STRIP ===== */
+.pricing-strip {
+  background: var(--black);
+  border-top: 4px solid var(--yellow);
+  border-bottom: 4px solid var(--yellow);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.pricing-strip h2 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 3px;
+  color: var(--yellow);
+  text-shadow: 3px 3px 0 var(--red);
+  margin-bottom: 0.5rem;
+}
+.pricing-strip .sub {
+  color: rgba(255,255,240,0.7);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+.price-card {
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 2rem 1.5rem;
+  box-shadow: 6px 6px 0 var(--yellow);
+  position: relative;
+  transition: transform 0.15s;
+}
+.price-card:hover { transform: translate(-3px,-3px); }
+.price-card.featured {
+  background: var(--yellow);
+  box-shadow: 6px 6px 0 var(--white);
+  border-color: var(--black);
+}
+.popular-tag {
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Bangers', cursive;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  background: var(--red);
+  color: var(--white);
+  border: 2px solid var(--black);
+  padding: 4px 16px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  white-space: nowrap;
+}
+.price-card h3 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  color: var(--red);
+  text-shadow: 1px 1px 0 var(--black);
+  margin-bottom: 0.5rem;
+}
+.price-card .price-num {
+  font-family: 'Bangers', cursive;
+  font-size: 2.8rem;
+  color: var(--black);
+  text-shadow: 2px 2px 0 var(--red);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.price-card .price-note {
+  font-size: 0.8rem;
+  color: #555;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.price-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.price-card ul li {
+  font-size: 0.85rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.price-card ul li::before { content: '★'; color: var(--red); font-size: 0.7rem; }
+.pricing-note {
+  font-size: 0.88rem;
+  color: rgba(255,255,240,0.5);
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+/* ===== ADD-ONS ===== */
+.addons-section {
+  padding: 5rem 2rem;
+  background: #F0F8FF;
+  border-top: 4px solid var(--black);
+  border-bottom: 4px solid var(--black);
+}
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.addon-card {
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 16px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  box-shadow: 4px 4px 0 var(--black);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.addon-card:hover { transform: translate(-3px,-3px); box-shadow: 7px 7px 0 var(--black); }
+.addon-icon { font-size: 2.2rem; display: block; margin-bottom: 0.6rem; }
+.addon-card h4 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  color: var(--red);
+  text-shadow: 1px 1px 0 var(--black);
+  margin-bottom: 0.4rem;
+}
+.addon-card p { font-size: 0.85rem; color: #444; line-height: 1.45; }
+
+/* ===== PROCESS ===== */
+.process-section {
+  padding: 5rem 2rem;
+  background: var(--white);
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+.step {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 5px 5px 0 var(--black);
+  position: relative;
+}
+.step-num {
+  font-family: 'Bangers', cursive;
+  font-size: 3rem;
+  color: var(--yellow);
+  text-shadow: 3px 3px 0 var(--black);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.step h3 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: var(--red);
+  text-shadow: 1px 1px 0 var(--black);
+  margin-bottom: 0.5rem;
+}
+.step p { font-size: 0.88rem; color: #333; line-height: 1.5; }
+.step:nth-child(even) { background: #FFF9E6; }
+
+/* ===== CTA ===== */
+.cta-section {
+  background: var(--red);
+  padding: 5rem 2rem;
+  text-align: center;
+  border-top: 4px solid var(--black);
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: 'BOOK IT!';
+  position: absolute;
+  font-family: 'Bangers', cursive;
+  font-size: clamp(5rem, 18vw, 12rem);
+  color: rgba(0,0,0,0.07);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%) rotate(-8deg);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.cta-section h2 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: 3px;
+  color: var(--yellow);
+  text-shadow: 4px 4px 0 var(--black);
+  margin-bottom: 1rem;
+}
+.cta-section p {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255,255,240,0.88);
+  max-width: 520px;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
+}
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--black);
+  border-top: 5px solid var(--yellow);
+  color: var(--white);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 3rem;
+}
+.footer-brand .footer-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2.4rem;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--red);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.footer-brand p {
+  font-size: 0.9rem;
+  color: rgba(255,255,240,0.65);
+  line-height: 1.6;
+  max-width: 280px;
+  margin-bottom: 1.2rem;
+}
+.footer-brand .social-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.social-link {
+  font-family: 'Bangers', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  background: rgba(255,215,0,0.12);
+  color: var(--yellow);
+  border: 2px solid rgba(255,215,0,0.35);
+  padding: 6px 14px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.social-link:hover { background: rgba(255,215,0,0.25); border-color: var(--yellow); }
+.footer-col h4 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 var(--red);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(255,215,0,0.2);
+  padding-bottom: 0.5rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a {
+  font-size: 0.88rem;
+  color: rgba(255,255,240,0.65);
+  text-decoration: none;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer-col ul a::before { content: '→'; color: var(--red); font-weight: 700; }
+.footer-col ul a:hover { color: var(--yellow); }
+.footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-contact li { font-size: 0.88rem; color: rgba(255,255,240,0.65); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+.footer-contact .icon { color: var(--yellow); font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+.footer-contact a { color: rgba(255,255,240,0.65); text-decoration: none; }
+.footer-contact a:hover { color: var(--yellow); }
+.footer-hours { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-hours li { font-size: 0.85rem; color: rgba(255,255,240,0.65); display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-hours .day  { color: rgba(255,255,240,0.45); }
+.footer-hours .time { color: rgba(255,255,240,0.8); font-weight: 700; }
+.footer-bottom {
+  border-top: 2px solid rgba(255,255,255,0.08);
+  padding: 1.4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,240,0.4); }
+.footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-legal a { font-size: 0.8rem; color: rgba(255,255,240,0.4); text-decoration: none; transition: color 0.15s; }
+.footer-legal a:hover { color: var(--yellow); }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .page-hero { padding: 2.5rem 1.25rem 2rem; }
+  .page-hero h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+
+  .services-section { padding: 3rem 1.25rem; }
+  .service-block {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+  .service-block.reverse { direction: ltr; }
+  .service-visual { border-right: none !important; border-left: none !important; border-bottom: 3px solid var(--black); min-height: 200px; padding: 2rem; }
+  .service-block.reverse .service-visual { border-left: none; }
+  .service-info { padding: 2rem 1.5rem; }
+  .service-emoji { font-size: 5rem; }
+
+  .pricing-strip { padding: 3rem 1.25rem; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 360px; }
+
+  .addons-section { padding: 3rem 1.25rem; }
+  .addons-grid { grid-template-columns: 1fr 1fr; }
+
+  .process-section { padding: 3rem 1.25rem; }
+  .steps { grid-template-columns: 1fr; }
+
+  .cta-section { padding: 3rem 1.25rem; }
+  .cta-btns { flex-direction: column; align-items: center; }
+
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 3rem 1.25rem 2rem; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-brand p { max-width: 100%; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; padding: 1.2rem 1.25rem; }
+}
+
+@media (max-width: 480px) {
+  nav { padding: 0 1rem; }
+  .nav-logo { font-size: 1.6rem; }
+  .addons-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-brand { grid-column: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">LOONEY<span>MOVERS</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="whyus.html">Why Us</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="freequote.html" class="nav-cta">FREE QUOTE</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="services.html" class="mob-link">Services</a>
+  <a href="whyus.html" class="mob-link">Why Us</a>
+  <a href="reviews.html" class="mob-link">Reviews</a>
+  <a href="freequote.html" class="mob-cta mob-link">FREE QUOTE</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-eyebrow">★ WHAT WE OFFER ★</div>
+  <h1>OUR SERVICES</h1>
+  <p>From a single studio apartment to a full office relocation — we've got the truck, the crew, and the cartoon energy to get it done right.</p>
+  <a href="freequote.html" class="btn-primary">GET A FREE QUOTE →</a>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    ★ LOCAL MOVES &nbsp;&nbsp; ✦ LONG DISTANCE &nbsp;&nbsp; ★ PACKING SERVICES &nbsp;&nbsp; ✦ FURNITURE ASSEMBLY &nbsp;&nbsp; ★ SAME-DAY AVAILABLE &nbsp;&nbsp; ✦ FULLY INSURED &nbsp;&nbsp; ★ SASKATOON'S #1 MOVERS &nbsp;&nbsp; ✦ LOCAL MOVES &nbsp;&nbsp; ★ LONG DISTANCE &nbsp;&nbsp; ✦ PACKING SERVICES &nbsp;&nbsp; ★ FURNITURE ASSEMBLY &nbsp;&nbsp; ✦ SAME-DAY AVAILABLE &nbsp;&nbsp; ★ FULLY INSURED &nbsp;&nbsp; ✦ SASKATOON'S #1 MOVERS &nbsp;&nbsp;
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <h2 class="section-label">WHAT WE DO</h2>
+  <p class="section-sub">Every move is different. We handle them all.</p>
+
+  <!-- 1. Residential -->
+  <div class="service-block">
+    <div class="service-visual blue-bg">
+      <span class="service-badge">MOST POPULAR</span>
+      <span class="service-emoji">🏠</span>
+    </div>
+    <div class="service-info">
+      <h2>RESIDENTIAL MOVES</h2>
+      <p class="desc">Moving your home is a big deal — we treat it that way. Whether it's a bachelor suite or a 5-bedroom house, our crew handles everything with care and speed.</p>
+      <ul class="service-includes">
+        <li>Full load &amp; unload with furniture blankets</li>
+        <li>Careful handling of fragile and oversized items</li>
+        <li>Disassembly &amp; reassembly of beds, desks, shelves</li>
+        <li>Placement in your new home exactly where you want it</li>
+        <li>Local Saskatoon moves and surrounding area</li>
+      </ul>
+      <div class="service-price">Starting at <span>$99/hr</span> · 2-man crew</div>
+    </div>
+  </div>
+
+  <!-- 2. Office -->
+  <div class="service-block reverse">
+    <div class="service-visual orange-bg">
+      <span class="service-badge">FAST TURNAROUND</span>
+      <span class="service-emoji">🏢</span>
+    </div>
+    <div class="service-info">
+      <h2>OFFICE &amp; COMMERCIAL MOVES</h2>
+      <p class="desc">Downtime costs money. We work fast, we work organized, and we get your business back up and running ASAP — nights and weekends available.</p>
+      <ul class="service-includes">
+        <li>Office furniture, desks, filing cabinets, equipment</li>
+        <li>IT equipment wrapped and transported safely</li>
+        <li>Labelled and organized unload for easy setup</li>
+        <li>After-hours &amp; weekend bookings available</li>
+        <li>Flexible scheduling around your business hours</li>
+      </ul>
+      <div class="service-price">Starting at <span>$119/hr</span> · 2-man crew</div>
+    </div>
+  </div>
+
+  <!-- 3. Packing -->
+  <div class="service-block">
+    <div class="service-visual yellow-bg">
+      <span class="service-badge">ADD-ON AVAILABLE</span>
+      <span class="service-emoji">📦</span>
+    </div>
+    <div class="service-info">
+      <h2>PACKING &amp; UNPACKING</h2>
+      <p class="desc">Don't want to deal with boxes? We've got you. Our team packs your entire home properly — fragile items wrapped, boxes labelled, nothing wasted.</p>
+      <ul class="service-includes">
+        <li>Full home or partial room packing</li>
+        <li>Bubble wrap &amp; protective materials included</li>
+        <li>Clearly labelled boxes by room</li>
+        <li>Unpacking service available at destination</li>
+        <li>Box &amp; supply sourcing available on request</li>
+      </ul>
+      <div class="service-price">Starting at <span>$65/hr</span> · per packer</div>
+    </div>
+  </div>
+
+  <!-- 4. Long Distance -->
+  <div class="service-block reverse">
+    <div class="service-visual green-bg">
+      <span class="service-badge">ACROSS SASK</span>
+      <span class="service-emoji">🗺️</span>
+    </div>
+    <div class="service-info">
+      <h2>LONG DISTANCE MOVES</h2>
+      <p class="desc">Moving out of Saskatoon? No problem. We cover moves across Saskatchewan — Regina, Prince Albert, North Battleford, and beyond. One flat-rate quote, no surprises.</p>
+      <ul class="service-includes">
+        <li>Flat-rate pricing — no per-km surprises</li>
+        <li>Full inventory checklist before departure</li>
+        <li>Secure load tie-downs for highway travel</li>
+        <li>Tracking &amp; communication throughout the move</li>
+        <li>Flexible pickup &amp; delivery windows</li>
+      </ul>
+      <div class="service-price"><span>Flat rate quotes</span> · call for pricing</div>
+    </div>
+  </div>
+
+  <!-- 5. Same Day -->
+  <div class="service-block">
+    <div class="service-visual red-bg">
+      <span class="service-badge">⚡ EMERGENCY</span>
+      <span class="service-emoji">⚡</span>
+    </div>
+    <div class="service-info">
+      <h2>SAME-DAY MOVES</h2>
+      <p class="desc">Life doesn't always give you two weeks notice. When you need to move fast, call us first. If we have availability, we'll be there — often within hours.</p>
+      <ul class="service-includes">
+        <li>Subject to truck &amp; crew availability</li>
+        <li>Call or text for fastest response</li>
+        <li>Perfect for last-minute lease changes</li>
+        <li>Studio to 2-bedroom best suited for same-day</li>
+        <li>No extra charge for same-day booking</li>
+      </ul>
+      <div class="service-price"><span>Call us now</span> · (306) 222-9165</div>
+    </div>
+  </div>
+
+  <!-- 6. Furniture -->
+  <div class="service-block reverse">
+    <div class="service-visual purple-bg">
+      <span class="service-badge">STAND-ALONE SERVICE</span>
+      <span class="service-emoji">🛋️</span>
+    </div>
+    <div class="service-info">
+      <h2>FURNITURE DELIVERY &amp; ASSEMBLY</h2>
+      <p class="desc">Just bought something big and need it moved or put together? We do single-item and multi-item furniture moves, plus full IKEA-style assembly.</p>
+      <ul class="service-includes">
+        <li>Marketplace &amp; store pickups (Facebook, Kijiji, etc.)</li>
+        <li>Delivery to any Saskatoon address</li>
+        <li>IKEA and flat-pack furniture assembly</li>
+        <li>Couch, bed frame, wardrobe — anything big</li>
+        <li>Stair carries and tight-space navigation</li>
+      </ul>
+      <div class="service-price">Starting at <span>$60</span> · flat call-out fee</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- PRICING -->
+<section class="pricing-strip" id="pricing">
+  <h2>SIMPLE PRICING</h2>
+  <p class="sub">Saskatoon's lowest rates — no travel fees, no fuel surcharges, no BS. Most competitors charge $130–$140/hr. We start at $99.</p>
+  <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
+    <div style="font-family:Bangers,cursive;font-size:1rem;letter-spacing:2px;background:#FFE8E8;color:#E8192C;border:3px solid #1a1a1a;padding:10px 22px;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;box-shadow:3px 3px 0 #1a1a1a;">✗ COMPETITORS: $130–$140/HR</div>
+    <div style="font-family:Bangers,cursive;font-size:1rem;letter-spacing:2px;background:#FFD700;color:#1a1a1a;border:3px solid #1a1a1a;padding:10px 22px;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;box-shadow:3px 3px 0 #1a1a1a;">★ LOONEY MOVERS: FROM $99/HR</div>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <h3>STUDIO / 1-BED</h3>
+      <div class="price-num">$99<span style="font-size:1.2rem">/hr</span></div>
+      <p class="price-note">2-man crew · 2hr minimum · no travel fee</p>
+      <ul>
+        <li>Up to 1 bedroom</li>
+        <li>Local Saskatoon</li>
+        <li>Furniture wrapping included</li>
+        <li>Basic disassembly</li>
+      </ul>
+    </div>
+    <div class="price-card featured">
+      <div class="popular-tag">★ MOST POPULAR</div>
+      <h3>2–3 BEDROOM</h3>
+      <div class="price-num">$115<span style="font-size:1.2rem">/hr</span></div>
+      <p class="price-note">3-man crew · 2hr minimum · no travel fee</p>
+      <ul>
+        <li>2 to 3 bedrooms</li>
+        <li>Full disassembly &amp; reassembly</li>
+        <li>All furniture blankets</li>
+        <li>Local Saskatoon</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <h3>4+ BEDROOM / OFFICE</h3>
+      <div class="price-num">QUOTE</div>
+      <p class="price-note">Custom crew size · flat rate</p>
+      <ul>
+        <li>Large homes &amp; offices</li>
+        <li>Custom crew &amp; truck size</li>
+        <li>Packing service available</li>
+        <li>Flexible scheduling</li>
+      </ul>
+    </div>
+  </div>
+  <p class="pricing-note">All prices + GST. No fuel surcharges. No travel fees. No hidden add-ons. Call (306) 222-9165 for a free estimate.</p>
+</section>
+
+<!-- ADD-ONS -->
+<section class="addons-section">
+  <h2 class="section-label">ADD-ON SERVICES</h2>
+  <p class="section-sub">Stack these onto any move for a complete experience</p>
+  <div class="addons-grid">
+    <div class="addon-card">
+      <span class="addon-icon">🧹</span>
+      <h4>CLEAN-UP</h4>
+      <p>Basic broom sweep of your old place before you hand over the keys.</p>
+    </div>
+    <div class="addon-card">
+      <span class="addon-icon">🗑️</span>
+      <h4>JUNK REMOVAL</h4>
+      <p>Got stuff you're not taking? We haul it away so you don't have to.</p>
+    </div>
+    <div class="addon-card">
+      <span class="addon-icon">🖼️</span>
+      <h4>SPECIALTY ITEMS</h4>
+      <p>Pianos, antiques, safes, artwork — extra care for extra-precious stuff.</p>
+    </div>
+    <div class="addon-card">
+      <span class="addon-icon">🔧</span>
+      <h4>ASSEMBLY ONLY</h4>
+      <p>Already moved but need everything put together? We'll come do just that.</p>
+    </div>
+    <div class="addon-card">
+      <span class="addon-icon">📦</span>
+      <h4>BOX SUPPLY</h4>
+      <p>Need boxes and packing supplies delivered before your move? Done.</p>
+    </div>
+    <div class="addon-card">
+      <span class="addon-icon">🏬</span>
+      <h4>STORAGE MOVES</h4>
+      <p>Moving stuff into or out of a storage unit? We handle that too.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="process-section">
+  <h2 class="section-label">HOW IT WORKS</h2>
+  <p class="section-sub">Four steps and you're done</p>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <h3>CALL OR TEXT</h3>
+      <p>Reach out at (306) 222-9165 or fill out our quote form. Tell us what you're moving and when.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <h3>GET YOUR QUOTE</h3>
+      <p>We'll get back to you fast with a flat-rate quote. No hidden fees, no guessing games.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <h3>WE SHOW UP</h3>
+      <p>Our crew arrives on time, ready to work. We bring everything we need — blankets, straps, dollies.</p>
+    </div>
+    <div class="step">
+      <span class="step-num">04</span>
+      <h3>YOU'RE MOVED</h3>
+      <p>Everything's in your new place, assembled where you want it. You pay what was quoted. Done.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>READY TO BOOK?</h2>
+  <p>Give us a call or grab a free quote online. We're fast, fair, and we actually show up.</p>
+  <div class="cta-btns">
+    <a href="freequote.html" class="btn-primary">GET A FREE QUOTE →</a>
+    <a href="tel:3062229165" class="btn-outline">📞 (306) 222-9165</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">LOONEY MOVERS</span>
+      <p>Saskatoon's most reliable (and most entertaining) moving crew. We show up on time, handle your stuff with care, and don't charge you surprise fees. That's the Looney promise.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">FACEBOOK</a>
+        <a href="#" class="social-link">GOOGLE</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>SERVICES</h4>
+      <ul>
+        <li><a href="services.html">Residential Moves</a></li>
+        <li><a href="services.html">Office Moves</a></li>
+        <li><a href="services.html">Packing &amp; Unpacking</a></li>
+        <li><a href="services.html">Long Distance</a></li>
+        <li><a href="services.html">Same-Day Moves</a></li>
+        <li><a href="services.html">Furniture &amp; Assembly</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>CONTACT US</h4>
+      <ul class="footer-contact">
+        <li><span class="icon">📞</span><span><a href="tel:3062229165">(306) 222-9165</a></span></li>
+        <li><span class="icon">✉️</span><span><a href="mailto:looneymovers.sk@gmail.com">looneymovers.sk@gmail.com</a></span></li>
+        <li><span class="icon">📍</span><span>Saskatoon, Saskatchewan</span></li>
+        <li><span class="icon">🚛</span><span>Serving Saskatoon &amp; surrounding areas</span></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>HOURS</h4>
+      <ul class="footer-hours">
+        <li><span class="day">Mon – Fri</span><span class="time">7am – 8pm</span></li>
+        <li><span class="day">Saturday</span><span class="time">8am – 6pm</span></li>
+        <li><span class="day">Sunday</span><span class="time">9am – 4pm</span></li>
+        <li><span class="day">Holidays</span><span class="time">By Request</span></li>
+      </ul>
+      <div style="margin-top:1.2rem;">
+        <a href="freequote.html" class="btn-primary" style="font-size:1rem; padding:10px 20px;">BOOK NOW →</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Looney Movers · Saskatoon, SK · All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="policy.html">Privacy Policy</a>
+      <a href="policy.html">Terms of Service</a>
+      <a href="policy.html">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobLinks   = mobileMenu.querySelectorAll('.mob-link');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
+</body>
+</html>

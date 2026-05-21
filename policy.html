@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy, Terms & Sitemap — Looney Movers Saskatoon</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #E8192C;
+  --yellow: #FFD700;
+  --black: #1a1a1a;
+  --white: #FFFEF0;
+  --orange: #FF6B00;
+  --green: #5D8A3C;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Comic Neue', cursive;
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  background: var(--red);
+  border-bottom: 4px solid var(--black);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--white); }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a {
+  font-family: 'Bangers', cursive;
+  font-size: 1.15rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.1s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--yellow); }
+.nav-cta {
+  background: var(--yellow) !important;
+  color: var(--black) !important;
+  padding: 8px 18px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 3px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.nav-cta:hover { transform: translate(-2px,-2px) !important; box-shadow: 5px 5px 0 var(--black) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+  z-index: 1100;
+}
+.hamburger span { display: block; width: 28px; height: 3px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px; left: 0; right: 0; bottom: 0;
+  background: var(--red);
+  border-top: 4px solid var(--black);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+  color: var(--white);
+  text-decoration: none;
+  text-shadow: 3px 3px 0 var(--black);
+}
+.mobile-menu a:hover { color: var(--yellow); }
+.mobile-menu .mob-cta {
+  background: var(--yellow);
+  color: var(--black) !important;
+  padding: 14px 36px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 5px 5px 0 var(--black);
+  text-shadow: none !important;
+}
+
+/* ===== HERO ===== */
+.page-hero {
+  background: var(--black);
+  border-bottom: 4px solid var(--yellow);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '📋';
+  position: absolute;
+  font-size: 18rem;
+  opacity: 0.03;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.page-hero-eyebrow {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  color: var(--orange);
+  background: var(--yellow);
+  display: inline-block;
+  padding: 4px 16px;
+  margin-bottom: 1rem;
+  border: 2px solid var(--black);
+}
+.page-hero h1 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 4px 4px 0 var(--red);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.page-hero p {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(255,255,240,0.65);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== TAB NAV ===== */
+.tab-nav {
+  background: var(--yellow);
+  border-bottom: 4px solid var(--black);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  position: sticky;
+  top: 70px;
+  z-index: 900;
+}
+.tab-btn {
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--black);
+  background: transparent;
+  border: none;
+  border-right: 3px solid var(--black);
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.tab-btn:last-child { border-right: none; }
+.tab-btn:hover   { background: rgba(0,0,0,0.08); }
+.tab-btn.active  { background: var(--red); color: var(--white); }
+
+/* ===== CONTENT PANELS ===== */
+.policy-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* Section headers */
+.policy-content h2 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: 3px;
+  color: var(--black);
+  text-shadow: 3px 3px 0 var(--red);
+  margin-bottom: 0.4rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+}
+.policy-content h2:first-child { margin-top: 0; }
+
+.policy-content h3 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--red);
+  text-shadow: 1px 1px 0 var(--black);
+  margin: 1.8rem 0 0.5rem;
+}
+
+.policy-content p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.policy-content ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.policy-content ul li {
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.55;
+  padding-left: 1.4rem;
+  position: relative;
+}
+.policy-content ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--red);
+  font-weight: 700;
+}
+
+/* Divider */
+.policy-divider {
+  border: none;
+  border-top: 3px solid var(--black);
+  margin: 2.5rem 0;
+  border-radius: 2px;
+}
+
+/* Highlight box */
+.highlight-box {
+  background: #FFF9E6;
+  border: 3px solid var(--black);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 4px 4px 0 var(--black);
+}
+.highlight-box p { margin-bottom: 0; color: #222; }
+.highlight-box.red-box { background: #FFF0F0; }
+.highlight-box.green-box { background: #F0F8F0; }
+
+/* Last updated badge */
+.updated-badge {
+  display: inline-block;
+  font-family: 'Bangers', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  background: var(--black);
+  color: var(--yellow);
+  padding: 4px 14px;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+/* Contact block */
+.contact-block {
+  background: var(--black);
+  border: 3px solid var(--yellow);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  box-shadow: 5px 5px 0 var(--yellow);
+}
+.contact-block p { color: rgba(255,255,240,0.75); margin-bottom: 0.4rem; }
+.contact-block p:last-child { margin-bottom: 0; }
+.contact-block a { color: var(--yellow); text-decoration: none; }
+.contact-block a:hover { text-decoration: underline; }
+.contact-block .contact-head {
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  margin-bottom: 0.75rem;
+}
+
+/* ===== SITEMAP GRID ===== */
+.sitemap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.sitemap-card {
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 5px 5px 0 var(--black);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.sitemap-card:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--black); }
+.sitemap-card-header {
+  padding: 0.9rem 1.25rem;
+  border-bottom: 3px solid var(--black);
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sitemap-card-header.yellow { background: var(--yellow); color: var(--black); }
+.sitemap-card-header.red    { background: var(--red); color: var(--white); }
+.sitemap-card-header.black  { background: var(--black); color: var(--yellow); }
+.sitemap-card-header.green  { background: var(--green); color: var(--white); }
+
+.sitemap-card ul { list-style: none; padding: 1rem 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.sitemap-card ul li a {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--black);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.1s;
+}
+.sitemap-card ul li a::before { content: '→'; color: var(--red); font-weight: 700; }
+.sitemap-card ul li a:hover { color: var(--red); }
+.sitemap-card ul li .anchor {
+  font-size: 0.78rem;
+  color: #aaa;
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--black);
+  border-top: 5px solid var(--yellow);
+  color: var(--white);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 3rem;
+}
+.footer-brand .footer-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2.4rem;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--red);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.footer-brand p { font-size: 0.9rem; color: rgba(255,255,240,0.65); line-height: 1.6; max-width: 280px; margin-bottom: 1.2rem; }
+.footer-brand .social-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.social-link {
+  font-family: 'Bangers', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  background: rgba(255,215,0,0.12);
+  color: var(--yellow);
+  border: 2px solid rgba(255,215,0,0.35);
+  padding: 6px 14px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.social-link:hover { background: rgba(255,215,0,0.25); border-color: var(--yellow); }
+.footer-col h4 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 var(--red);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(255,215,0,0.2);
+  padding-bottom: 0.5rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a { font-size: 0.88rem; color: rgba(255,255,240,0.65); text-decoration: none; transition: color 0.15s; display: flex; align-items: center; gap: 6px; }
+.footer-col ul a::before { content: '→'; color: var(--red); font-weight: 700; }
+.footer-col ul a:hover { color: var(--yellow); }
+.footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-contact li { font-size: 0.88rem; color: rgba(255,255,240,0.65); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+.footer-contact .icon { color: var(--yellow); flex-shrink: 0; }
+.footer-contact a { color: rgba(255,255,240,0.65); text-decoration: none; }
+.footer-contact a:hover { color: var(--yellow); }
+.footer-hours { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-hours li { font-size: 0.85rem; color: rgba(255,255,240,0.65); display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-hours .day  { color: rgba(255,255,240,0.45); }
+.footer-hours .time { color: rgba(255,255,240,0.8); font-weight: 700; }
+.footer-bottom {
+  border-top: 2px solid rgba(255,255,255,0.08);
+  padding: 1.4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,240,0.4); }
+.footer-legal { display: flex; gap: 1.5rem; }
+.footer-legal a { font-size: 0.8rem; color: rgba(255,255,240,0.4); text-decoration: none; }
+.footer-legal a:hover { color: var(--yellow); }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .page-hero { padding: 2.5rem 1.25rem 2rem; }
+  .tab-nav { top: 70px; overflow-x: auto; justify-content: flex-start; }
+  .tab-btn { font-size: 0.9rem; padding: 0.85rem 1.25rem; }
+  .policy-content { padding: 2.5rem 1.25rem 4rem; }
+  .sitemap-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 3rem 1.25rem 2rem; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; padding: 1.2rem 1.25rem; }
+}
+@media (max-width: 480px) {
+  nav { padding: 0 1rem; }
+  .nav-logo { font-size: 1.6rem; }
+  .sitemap-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-brand { grid-column: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">LOONEY<span>MOVERS</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="whyus.html">Why Us</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="freequote.html" class="nav-cta">FREE QUOTE</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="services.html"  class="mob-link">Services</a>
+  <a href="whyus.html"     class="mob-link">Why Us</a>
+  <a href="reviews.html"   class="mob-link">Reviews</a>
+  <a href="freequote.html" class="mob-cta mob-link">FREE QUOTE</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-eyebrow">★ THE BORING (BUT IMPORTANT) STUFF ★</div>
+  <h1>LEGAL &amp; SITEMAP</h1>
+  <p>Privacy Policy, Terms of Service, and our full site map — all in one place. We keep it plain and honest.</p>
+</section>
+
+<!-- TAB NAV -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showPanel('privacy')">🔒 PRIVACY POLICY</button>
+  <button class="tab-btn"        onclick="showPanel('terms')">📄 TERMS OF SERVICE</button>
+  <button class="tab-btn"        onclick="showPanel('sitemap')">🗺️ SITEMAP</button>
+</div>
+
+<!-- CONTENT -->
+<div class="policy-content">
+
+  <!-- ===== PRIVACY POLICY ===== -->
+  <div class="panel active" id="panel-privacy">
+    <span class="updated-badge">LAST UPDATED: JANUARY 2025</span>
+
+    <h2>PRIVACY POLICY</h2>
+    <p>Looney Movers ("we", "us", or "our") is a moving company based in Saskatoon, Saskatchewan, Canada. This Privacy Policy explains how we collect, use, and protect your personal information when you use our website or book our services.</p>
+
+    <div class="highlight-box">
+      <p>We don't sell your data. We don't share it with advertisers. We collect only what we need to provide you with moving services and get back to you with a quote.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <h3>INFORMATION WE COLLECT</h3>
+    <p>When you fill out our quote form, call us, or contact us by email, we may collect the following:</p>
+    <ul>
+      <li>Your name and contact details (phone number, email address)</li>
+      <li>Your current and destination addresses for the move</li>
+      <li>Details about your move (home size, move date, services needed)</li>
+      <li>Any additional information you voluntarily provide in the notes field</li>
+    </ul>
+    <p>We do not collect payment information through this website. Any payment is handled in person or via a secure third-party processor at time of service.</p>
+
+    <h3>HOW WE USE YOUR INFORMATION</h3>
+    <ul>
+      <li>To contact you with a quote for your move</li>
+      <li>To confirm and coordinate your booking</li>
+      <li>To send service-related updates (reminders, confirmations)</li>
+      <li>To improve our services based on customer feedback</li>
+    </ul>
+    <p>We do not use your information for marketing purposes without your explicit consent. We will not add you to email lists or send unsolicited promotional messages.</p>
+
+    <h3>HOW WE STORE YOUR INFORMATION</h3>
+    <p>Quote requests submitted through our website are received via email to our business inbox. We retain customer information for a reasonable period for service delivery and record-keeping purposes. We take reasonable measures to protect your information from unauthorized access.</p>
+
+    <h3>DO WE SHARE YOUR INFORMATION?</h3>
+    <p>We do not sell, trade, or rent your personal information to third parties. We may share limited information only in the following circumstances:</p>
+    <ul>
+      <li>With our moving crew members to the extent necessary to complete your move</li>
+      <li>If required by law or a lawful government request</li>
+      <li>To protect the rights, safety, or property of Looney Movers or others</li>
+    </ul>
+
+    <h3>COOKIES &amp; WEBSITE ANALYTICS</h3>
+    <p>Our website may use basic analytics tools (such as Google Analytics) to understand how visitors use our site. These tools may set cookies to track anonymous usage data such as pages visited and time on site. No personally identifiable information is collected through cookies.</p>
+    <p>You can disable cookies in your browser settings at any time without affecting your ability to use our website.</p>
+
+    <h3>THIRD-PARTY LINKS</h3>
+    <p>Our website contains links to third-party platforms such as Google and Facebook. Once you leave our site, their own privacy policies apply. We are not responsible for the privacy practices of external sites.</p>
+
+    <h3>YOUR RIGHTS</h3>
+    <p>You have the right to request access to the personal information we hold about you, ask us to correct inaccurate information, or request that we delete your information. To make any such request, contact us using the details below.</p>
+
+    <h3>CHILDREN'S PRIVACY</h3>
+    <p>Our services are not directed at children under 18. We do not knowingly collect personal information from minors.</p>
+
+    <h3>CHANGES TO THIS POLICY</h3>
+    <p>We may update this Privacy Policy from time to time. The "Last Updated" date at the top of this page will reflect any changes. Continued use of our website following any updates constitutes acceptance of the revised policy.</p>
+
+    <div class="contact-block">
+      <div class="contact-head">PRIVACY QUESTIONS?</div>
+      <p>📞 <a href="tel:3062229165">(306) 222-9165</a></p>
+      <p>✉️ <a href="mailto:looneymovers.sk@gmail.com">looneymovers.sk@gmail.com</a></p>
+      <p>📍 Saskatoon, Saskatchewan, Canada</p>
+    </div>
+  </div>
+
+  <!-- ===== TERMS OF SERVICE ===== -->
+  <div class="panel" id="panel-terms">
+    <span class="updated-badge">LAST UPDATED: JANUARY 2025</span>
+
+    <h2>TERMS OF SERVICE</h2>
+    <p>These Terms of Service govern your use of the Looney Movers website and the moving services we provide. By booking our services or using our website, you agree to these terms. Please read them carefully.</p>
+
+    <div class="highlight-box green-box">
+      <p>We aim to be fair and straightforward. These terms exist to protect both you and us. If anything is unclear, just call us — we're real people.</p>
+    </div>
+
+    <hr class="policy-divider">
+
+    <h3>1. BOOKING &amp; QUOTES</h3>
+    <p>All quotes provided by Looney Movers are estimates based on the information you provide. Final pricing is confirmed before work begins. We reserve the right to adjust a quote if the scope of work materially differs from what was described (e.g. significantly more items than disclosed, access issues not mentioned).</p>
+    <ul>
+      <li>Quotes are provided free of charge and without obligation</li>
+      <li>A booking is confirmed once we have agreed on a date and time</li>
+      <li>We do not require a deposit for most bookings</li>
+      <li>Same-day and short-notice moves are subject to availability</li>
+    </ul>
+
+    <h3>2. PAYMENT</h3>
+    <p>Payment is due upon completion of the move unless otherwise agreed in writing. We accept cash, e-Transfer, and credit card. Applicable GST will be added to all invoices.</p>
+    <ul>
+      <li>Hourly moves are billed in 30-minute increments after the minimum</li>
+      <li>Flat-rate moves are billed at the agreed amount regardless of time</li>
+      <li>Additional services added on the day of the move will be billed at our standard rates</li>
+    </ul>
+
+    <h3>3. CANCELLATIONS &amp; RESCHEDULING</h3>
+    <p>We understand plans change. We ask for as much notice as possible if you need to cancel or reschedule.</p>
+    <ul>
+      <li>Cancellations with 48+ hours notice: no charge</li>
+      <li>Cancellations with 24–48 hours notice: may be subject to a cancellation fee</li>
+      <li>Cancellations with less than 24 hours notice or no-shows: a cancellation fee may apply</li>
+      <li>Looney Movers reserves the right to reschedule in cases of severe weather, equipment failure, or other circumstances beyond our control</li>
+    </ul>
+
+    <h3>4. LIABILITY &amp; DAMAGE</h3>
+    <p>Looney Movers takes every precaution to protect your belongings. We are fully insured. However, the following conditions apply:</p>
+    <ul>
+      <li>We are liable for damage caused by our crew's negligence during the move</li>
+      <li>We are not liable for damage to items that were pre-existing, improperly packed by the customer, or inherently fragile without disclosure</li>
+      <li>High-value or irreplaceable items should be disclosed before the move</li>
+      <li>Damage claims must be reported within 48 hours of move completion</li>
+      <li>Our liability is limited to the replacement or repair value of the damaged item, not sentimental value</li>
+    </ul>
+
+    <div class="highlight-box red-box">
+      <p>Please disclose any specialty, fragile, or high-value items before your move so we can take appropriate precautions. Items like pianos, antiques, artwork, and electronics require special handling.</p>
+    </div>
+
+    <h3>5. CUSTOMER RESPONSIBILITIES</h3>
+    <p>To ensure a smooth move, we ask that you:</p>
+    <ul>
+      <li>Provide accurate information about the scope of the move when booking</li>
+      <li>Ensure clear access to both pickup and destination locations</li>
+      <li>Disclose any stairs, elevators, long carries, or tight spaces in advance</li>
+      <li>Have all items ready to be moved at the agreed start time</li>
+      <li>Ensure any items containing hazardous materials are not included in the move</li>
+      <li>Be present or have an authorized representative present during the move</li>
+    </ul>
+
+    <h3>6. PROHIBITED ITEMS</h3>
+    <p>We cannot transport the following items:</p>
+    <ul>
+      <li>Hazardous materials, flammable liquids, explosives, or chemicals</li>
+      <li>Illegal substances or contraband</li>
+      <li>Firearms or ammunition (unless properly declared and legal)</li>
+      <li>Perishable food items on long-distance moves</li>
+      <li>Live animals or plants</li>
+    </ul>
+
+    <h3>7. WEBSITE USE</h3>
+    <p>By using the Looney Movers website, you agree not to misuse the site, submit false information through our quote form, or attempt to interfere with the site's functionality. All content on this website is the property of Looney Movers and may not be reproduced without permission.</p>
+
+    <h3>8. GOVERNING LAW</h3>
+    <p>These Terms of Service are governed by the laws of the Province of Saskatchewan and the applicable federal laws of Canada. Any disputes shall be resolved in the courts of Saskatchewan.</p>
+
+    <h3>9. CHANGES TO THESE TERMS</h3>
+    <p>We may update these Terms from time to time. Continued use of our website or services after any changes constitutes acceptance of the updated terms.</p>
+
+    <div class="contact-block">
+      <div class="contact-head">QUESTIONS ABOUT OUR TERMS?</div>
+      <p>📞 <a href="tel:3062229165">(306) 222-9165</a></p>
+      <p>✉️ <a href="mailto:looneymovers.sk@gmail.com">looneymovers.sk@gmail.com</a></p>
+      <p>📍 Saskatoon, Saskatchewan, Canada</p>
+    </div>
+  </div>
+
+  <!-- ===== SITEMAP ===== -->
+  <div class="panel" id="panel-sitemap">
+    <span class="updated-badge">LOONEY MOVERS · SASKATOON, SK</span>
+
+    <h2>SITEMAP</h2>
+    <p>Every page on the Looney Movers website, organized for easy navigation.</p>
+
+    <div class="sitemap-grid">
+
+      <div class="sitemap-card">
+        <div class="sitemap-card-header yellow">🏠 MAIN PAGES</div>
+        <ul>
+          <li><a href="index.html">Home <span class="anchor">index.html</span></a></li>
+          <li><a href="services.html">Services <span class="anchor">services.html</span></a></li>
+          <li><a href="whyus.html">Why Us <span class="anchor">whyus.html</span></a></li>
+          <li><a href="reviews.html">Reviews <span class="anchor">reviews.html</span></a></li>
+          <li><a href="freequote.html">Free Quote <span class="anchor">freequote.html</span></a></li>
+          <li><a href="policy.html">Legal &amp; Sitemap <span class="anchor">policy.html</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sitemap-card">
+        <div class="sitemap-card-header red">🚛 SERVICES</div>
+        <ul>
+          <li><a href="services.html">Residential Moves</a></li>
+          <li><a href="services.html">Office &amp; Commercial</a></li>
+          <li><a href="services.html">Packing &amp; Unpacking</a></li>
+          <li><a href="services.html">Long Distance Moves</a></li>
+          <li><a href="services.html">Same-Day Moves</a></li>
+          <li><a href="services.html">Furniture &amp; Assembly</a></li>
+          <li><a href="services.html">Pricing</a></li>
+          <li><a href="services.html">Add-On Services</a></li>
+        </ul>
+      </div>
+
+      <div class="sitemap-card">
+        <div class="sitemap-card-header black">⭐ REVIEWS</div>
+        <ul>
+          <li><a href="reviews.html">All Reviews</a></li>
+          <li><a href="reviews.html#leave-review">Leave a Review</a></li>
+          <li><a href="whyus.html">Why Choose Us</a></li>
+          <li><a href="whyus.html#compare">Comparison Table</a></li>
+        </ul>
+      </div>
+
+      <div class="sitemap-card">
+        <div class="sitemap-card-header green">📋 LEGAL</div>
+        <ul>
+          <li><a href="policy.html" onclick="showPanel('privacy'); return false;">Privacy Policy</a></li>
+          <li><a href="policy.html" onclick="showPanel('terms'); return false;">Terms of Service</a></li>
+          <li><a href="policy.html" onclick="showPanel('sitemap'); return false;">Sitemap</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr class="policy-divider">
+
+    <h3>QUICK CONTACT</h3>
+    <div class="contact-block">
+      <div class="contact-head">LOONEY MOVERS · SASKATOON</div>
+      <p>📞 <a href="tel:3062229165">(306) 222-9165</a></p>
+      <p>✉️ <a href="mailto:looneymovers.sk@gmail.com">looneymovers.sk@gmail.com</a></p>
+      <p>📍 Serving Saskatoon, SK and surrounding areas</p>
+      <p style="margin-top:0.75rem; font-size:0.82rem; color:rgba(255,255,240,0.4);">Mon–Fri 7am–8pm · Sat 8am–6pm · Sun 9am–4pm</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">LOONEY MOVERS</span>
+      <p>Saskatoon's most reliable (and most entertaining) moving crew. We show up on time, handle your stuff with care, and don't charge you surprise fees. That's the Looney promise.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">FACEBOOK</a>
+        <a href="#" class="social-link">GOOGLE</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>PAGES</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="whyus.html">Why Us</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="freequote.html">Get a Quote</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>CONTACT US</h4>
+      <ul class="footer-contact">
+        <li><span class="icon">📞</span><span><a href="tel:3062229165">(306) 222-9165</a></span></li>
+        <li><span class="icon">✉️</span><span><a href="mailto:looneymovers.sk@gmail.com">looneymovers.sk@gmail.com</a></span></li>
+        <li><span class="icon">📍</span><span>Saskatoon, Saskatchewan</span></li>
+        <li><span class="icon">🚛</span><span>Serving Saskatoon &amp; surrounding areas</span></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>HOURS</h4>
+      <ul class="footer-hours">
+        <li><span class="day">Mon – Fri</span><span class="time">7am – 8pm</span></li>
+        <li><span class="day">Saturday</span><span class="time">8am – 6pm</span></li>
+        <li><span class="day">Sunday</span><span class="time">9am – 4pm</span></li>
+        <li><span class="day">Holidays</span><span class="time">By Request</span></li>
+      </ul>
+      <div style="margin-top:1.2rem;">
+        <a href="freequote.html" style="font-family:'Bangers',cursive; font-size:1rem; letter-spacing:2px; background:var(--red); color:var(--white); border:3px solid var(--black); padding:10px 20px; text-decoration:none; display:inline-block; border-radius:255px 15px 225px 15px/15px 225px 15px 255px; box-shadow:4px 4px 0 var(--black);">BOOK NOW →</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Looney Movers · Saskatoon, SK · All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="policy.html" onclick="showPanel('privacy')">Privacy Policy</a>
+      <a href="policy.html" onclick="showPanel('terms')">Terms of Service</a>
+      <a href="policy.html" onclick="showPanel('sitemap')">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Tab switching
+  function showPanel(name) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    const idx = { privacy: 0, terms: 1, sitemap: 2 }[name];
+    document.querySelectorAll('.tab-btn')[idx].classList.add('active');
+    document.querySelector('.policy-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Check URL hash on load to open correct tab
+  const hash = window.location.hash;
+  if (hash === '#terms')   showPanel('terms');
+  if (hash === '#sitemap') showPanel('sitemap');
+</script>
+</body>
+</html>

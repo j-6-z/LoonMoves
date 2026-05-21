@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews — Looney Movers Saskatoon</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #E8192C;
+  --yellow: #FFD700;
+  --black: #1a1a1a;
+  --white: #FFFEF0;
+  --orange: #FF6B00;
+  --sky: #87CEEB;
+  --green: #5D8A3C;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Comic Neue', cursive;
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  background: var(--red);
+  border-bottom: 4px solid var(--black);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--white); }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a {
+  font-family: 'Bangers', cursive;
+  font-size: 1.15rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.1s;
+  white-space: nowrap;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--yellow); }
+.nav-cta {
+  background: var(--yellow) !important;
+  color: var(--black) !important;
+  padding: 8px 18px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 3px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.nav-cta:hover { transform: translate(-2px,-2px) !important; box-shadow: 5px 5px 0 var(--black) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+  z-index: 1100;
+}
+.hamburger span { display: block; width: 28px; height: 3px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px; left: 0; right: 0; bottom: 0;
+  background: var(--red);
+  border-top: 4px solid var(--black);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+  color: var(--white);
+  text-decoration: none;
+  text-shadow: 3px 3px 0 var(--black);
+}
+.mobile-menu a:hover { color: var(--yellow); }
+.mobile-menu .mob-cta {
+  background: var(--yellow);
+  color: var(--black) !important;
+  padding: 14px 36px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 5px 5px 0 var(--black);
+  text-shadow: none !important;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  font-family: 'Bangers', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  background: var(--red);
+  color: var(--white);
+  border: 3px solid var(--black);
+  padding: 13px 32px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 5px 5px 0 var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  transition: transform 0.1s, box-shadow 0.1s;
+  white-space: nowrap;
+  animation: pulse-btn 2s ease-in-out infinite;
+}
+.btn-primary:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--black); animation: none; }
+@keyframes pulse-btn { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+
+.btn-secondary {
+  font-family: 'Bangers', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  background: var(--yellow);
+  color: var(--black);
+  border: 3px solid var(--black);
+  padding: 13px 32px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 5px 5px 0 var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  transition: transform 0.1s, box-shadow 0.1s;
+  white-space: nowrap;
+}
+.btn-secondary:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--black); }
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  background: var(--green);
+  border-bottom: 4px solid var(--black);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '★ ★ ★ ★ ★';
+  position: absolute;
+  font-size: clamp(4rem, 12vw, 9rem);
+  opacity: 0.07;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 20px;
+  color: var(--white);
+}
+.page-hero-eyebrow {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  color: var(--black);
+  background: var(--yellow);
+  display: inline-block;
+  padding: 4px 16px;
+  margin-bottom: 1rem;
+  border: 2px solid var(--black);
+}
+.page-hero h1 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(3rem, 9vw, 6rem);
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 5px 5px 0 var(--black);
+  line-height: 0.95;
+  margin-bottom: 1rem;
+}
+.page-hero p {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255,255,240,0.85);
+  max-width: 560px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+.hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ===== SCORE STRIP ===== */
+.score-strip {
+  background: var(--black);
+  border-bottom: 4px solid var(--yellow);
+  padding: 2.5rem 2rem;
+}
+.score-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.score-main {
+  text-align: center;
+}
+.score-num {
+  font-family: 'Bangers', cursive;
+  font-size: 6rem;
+  color: var(--yellow);
+  text-shadow: 4px 4px 0 var(--red);
+  line-height: 1;
+  display: block;
+}
+.score-stars {
+  font-size: 2rem;
+  color: var(--yellow);
+  letter-spacing: 4px;
+  display: block;
+  margin: 0.2rem 0;
+}
+.score-label {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,240,0.5);
+}
+.score-divider {
+  width: 3px;
+  height: 80px;
+  background: rgba(255,215,0,0.2);
+  border-radius: 2px;
+}
+.score-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.score-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bar-label {
+  font-family: 'Bangers', cursive;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: var(--yellow);
+  min-width: 30px;
+  text-align: right;
+}
+.bar-track {
+  width: 160px;
+  height: 10px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 5px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  background: var(--yellow);
+  border-radius: 5px;
+  animation: bar-grow 1.2s ease-out forwards;
+  transform-origin: left;
+}
+@keyframes bar-grow { from { width: 0; } }
+.bar-count {
+  font-size: 0.8rem;
+  color: rgba(255,255,240,0.4);
+  font-weight: 700;
+  min-width: 24px;
+}
+.score-platforms {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+.platform-pill {
+  font-family: 'Bangers', cursive;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  background: rgba(255,215,0,0.1);
+  color: var(--yellow);
+  border: 2px solid rgba(255,215,0,0.3);
+  padding: 8px 20px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ===== MARQUEE ===== */
+.marquee-strip {
+  background: var(--yellow);
+  border-top: 4px solid var(--black);
+  border-bottom: 4px solid var(--black);
+  padding: 9px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.marquee-inner {
+  display: inline-block;
+  animation: marquee 22s linear infinite;
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  color: var(--black);
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ===== SECTION LABELS ===== */
+.section-label {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 3px;
+  text-align: center;
+  color: var(--black);
+  text-shadow: 3px 3px 0 var(--red);
+  margin-bottom: 0.4rem;
+}
+.section-sub {
+  text-align: center;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+/* ===== FILTER BAR ===== */
+.filter-bar {
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.filter-btn {
+  font-family: 'Bangers', cursive;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  background: var(--white);
+  color: var(--black);
+  border: 3px solid var(--black);
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 3px 0 var(--black);
+  transition: transform 0.1s, background 0.1s;
+}
+.filter-btn:hover { transform: translate(-2px,-2px); }
+.filter-btn.active { background: var(--red); color: var(--white); }
+
+/* ===== REVIEWS GRID ===== */
+.reviews-section {
+  padding: 2rem 2rem 5rem;
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.review-card {
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  padding: 1.8rem 1.6rem 2rem;
+  box-shadow: 5px 5px 0 var(--black);
+  position: relative;
+  margin-bottom: 22px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.review-card:hover { transform: translate(-3px,-3px); box-shadow: 8px 8px 0 var(--black); }
+.review-card:nth-child(3n+1) { background: #FFFEF0; }
+.review-card:nth-child(3n+2) { background: #FFF9E6; }
+.review-card:nth-child(3n)   { background: #F0F8FF; }
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.reviewer-info { display: flex; align-items: center; gap: 10px; }
+.reviewer-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid var(--black);
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  color: var(--black);
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0 var(--black);
+}
+.reviewer-avatar.av-red    { background: #FFE0E0; }
+.reviewer-avatar.av-blue   { background: #E0EEFF; }
+.reviewer-avatar.av-green  { background: #E0F5E0; }
+.reviewer-avatar.av-purple { background: #F0E0FF; }
+
+.reviewer-name {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: var(--black);
+  line-height: 1;
+}
+.reviewer-location {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 700;
+}
+.review-platform {
+  font-family: 'Bangers', cursive;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  background: var(--black);
+  color: var(--yellow);
+  padding: 3px 10px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.review-platform.google   { background: #4285F4; color: white; }
+.review-platform.facebook { background: #1877F2; color: white; }
+
+.review-stars { color: var(--yellow); font-size: 1.1rem; letter-spacing: 2px; }
+
+.review-service-tag {
+  display: inline-block;
+  font-family: 'Bangers', cursive;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  background: rgba(232,25,44,0.08);
+  color: var(--red);
+  border: 1px solid rgba(232,25,44,0.2);
+  padding: 3px 10px;
+  border-radius: 6px;
+  align-self: flex-start;
+}
+
+.review-card blockquote {
+  font-size: 0.93rem;
+  font-weight: 700;
+  line-height: 1.6;
+  font-style: italic;
+  color: #222;
+  flex: 1;
+}
+
+.speech-tail {
+  position: absolute;
+  bottom: -20px; left: 28px;
+  width: 0; height: 0;
+  border-left: 18px solid transparent;
+  border-top: 22px solid var(--black);
+  z-index: 1;
+}
+.speech-tail::after {
+  content: '';
+  position: absolute;
+  top: -25px; left: -13px;
+  width: 0; height: 0;
+  border-left: 14px solid transparent;
+  border-top: 20px solid var(--white);
+  z-index: 2;
+}
+
+/* hidden reviews */
+.review-card.hidden { display: none; }
+
+/* Load more */
+.load-more-wrap {
+  text-align: center;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* ===== LEAVE A REVIEW STRIP ===== */
+.leave-review {
+  background: var(--yellow);
+  border-top: 4px solid var(--black);
+  border-bottom: 4px solid var(--black);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.leave-review h2 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 3px;
+  color: var(--black);
+  text-shadow: 3px 3px 0 var(--red);
+  margin-bottom: 0.5rem;
+}
+.leave-review p {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+.platform-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.platform-btn {
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  padding: 12px 28px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 4px 0 var(--black);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.1s, box-shadow 0.1s;
+  white-space: nowrap;
+}
+.platform-btn:hover { transform: translate(-3px,-3px); box-shadow: 7px 7px 0 var(--black); }
+.platform-btn.google   { background: #4285F4; color: white; }
+.platform-btn.facebook { background: #1877F2; color: white; }
+
+/* ===== CTA ===== */
+.cta-section {
+  background: var(--black);
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '5★';
+  position: absolute;
+  font-family: 'Bangers', cursive;
+  font-size: clamp(6rem, 22vw, 16rem);
+  color: rgba(255,215,0,0.04);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%) rotate(-8deg);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.cta-section h2 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: 3px;
+  color: var(--yellow);
+  text-shadow: 4px 4px 0 var(--red);
+  margin-bottom: 1rem;
+}
+.cta-section p {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(255,255,240,0.8);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
+}
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--black);
+  border-top: 5px solid var(--yellow);
+  color: var(--white);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 3rem;
+}
+.footer-brand .footer-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2.4rem;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--red);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.footer-brand p { font-size: 0.9rem; color: rgba(255,255,240,0.65); line-height: 1.6; max-width: 280px; margin-bottom: 1.2rem; }
+.footer-brand .social-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.social-link {
+  font-family: 'Bangers', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  background: rgba(255,215,0,0.12);
+  color: var(--yellow);
+  border: 2px solid rgba(255,215,0,0.35);
+  padding: 6px 14px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.social-link:hover { background: rgba(255,215,0,0.25); border-color: var(--yellow); }
+.footer-col h4 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 var(--red);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(255,215,0,0.2);
+  padding-bottom: 0.5rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a { font-size: 0.88rem; color: rgba(255,255,240,0.65); text-decoration: none; transition: color 0.15s; display: flex; align-items: center; gap: 6px; }
+.footer-col ul a::before { content: '→'; color: var(--red); font-weight: 700; }
+.footer-col ul a:hover { color: var(--yellow); }
+.footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-contact li { font-size: 0.88rem; color: rgba(255,255,240,0.65); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+.footer-contact .icon { color: var(--yellow); flex-shrink: 0; }
+.footer-contact a { color: rgba(255,255,240,0.65); text-decoration: none; }
+.footer-contact a:hover { color: var(--yellow); }
+.footer-hours { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-hours li { font-size: 0.85rem; color: rgba(255,255,240,0.65); display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-hours .day  { color: rgba(255,255,240,0.45); }
+.footer-hours .time { color: rgba(255,255,240,0.8); font-weight: 700; }
+.footer-bottom {
+  border-top: 2px solid rgba(255,255,255,0.08);
+  padding: 1.4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,240,0.4); }
+.footer-legal { display: flex; gap: 1.5rem; }
+.footer-legal a { font-size: 0.8rem; color: rgba(255,255,240,0.4); text-decoration: none; }
+.footer-legal a:hover { color: var(--yellow); }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .page-hero { padding: 3rem 1.25rem 2.5rem; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .score-inner { gap: 2rem; }
+  .score-divider { display: none; }
+  .bar-track { width: 120px; }
+  .filter-bar { padding: 1.5rem 1.25rem 0; gap: 0.5rem; }
+  .filter-btn { font-size: 0.82rem; padding: 6px 14px; }
+  .reviews-section { padding: 1.5rem 1.25rem 3.5rem; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .leave-review { padding: 3rem 1.25rem; }
+  .platform-btns { flex-direction: column; align-items: center; }
+  .cta-section { padding: 3rem 1.25rem; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 3rem 1.25rem 2rem; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; padding: 1.2rem 1.25rem; }
+}
+@media (max-width: 480px) {
+  nav { padding: 0 1rem; }
+  .nav-logo { font-size: 1.6rem; }
+  .score-num { font-size: 4rem; }
+  .score-stars { font-size: 1.5rem; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-brand { grid-column: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">LOONEY<span>MOVERS</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="whyus.html">Why Us</a></li>
+    <li><a href="reviews.html" class="active">Reviews</a></li>
+    <li><a href="freequote.html" class="nav-cta">FREE QUOTE</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="services.html"  class="mob-link">Services</a>
+  <a href="whyus.html"     class="mob-link">Why Us</a>
+  <a href="reviews.html"   class="mob-link">Reviews</a>
+  <a href="freequote.html" class="mob-cta mob-link">FREE QUOTE</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-eyebrow">★ STRAIGHT FROM SASKATOON ★</div>
+  <h1>WHAT PEOPLE<br>ARE SAYING</h1>
+  <p>Real reviews from real customers across Saskatoon. We don't write them, we just try to earn them on every single move.</p>
+  <div class="hero-btns">
+    <a href="freequote.html" class="btn-primary">GET A FREE QUOTE →</a>
+    <a href="#leave-review"  class="btn-secondary">LEAVE US A REVIEW ★</a>
+  </div>
+</section>
+
+<!-- SCORE STRIP -->
+<div class="score-strip">
+  <div class="score-inner">
+    <div class="score-main">
+      <span class="score-num">4.9</span>
+      <span class="score-stars">★★★★★</span>
+      <span class="score-label">AVERAGE RATING</span>
+    </div>
+    <div class="score-divider"></div>
+    <div class="score-stats">
+      <div class="score-bar-row">
+        <span class="bar-label">5★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div>
+        <span class="bar-count">46</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="bar-label">4★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:8%; animation-delay:0.2s"></div></div>
+        <span class="bar-count">4</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="bar-label">3★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:2%; animation-delay:0.4s"></div></div>
+        <span class="bar-count">1</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="bar-label">2★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:0%; animation-delay:0.6s"></div></div>
+        <span class="bar-count">0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="bar-label">1★</span>
+        <div class="bar-track"><div class="bar-fill" style="width:0%; animation-delay:0.8s"></div></div>
+        <span class="bar-count">0</span>
+      </div>
+    </div>
+    <div class="score-divider"></div>
+    <div class="score-platforms">
+      <div class="platform-pill">★ 4.9 ON GOOGLE · 38 REVIEWS</div>
+      <div class="platform-pill">★ 4.9 ON FACEBOOK · 13 REVIEWS</div>
+      <div class="platform-pill">★ 51 TOTAL REVIEWS</div>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    ★ ON TIME EVERY TIME &nbsp;&nbsp; ✦ NO HIDDEN FEES &nbsp;&nbsp; ★ CAREFUL WITH EVERYTHING &nbsp;&nbsp; ✦ FAST &amp; FRIENDLY &nbsp;&nbsp; ★ BEST MOVERS IN SASKATOON &nbsp;&nbsp; ✦ WOULD RECOMMEND &nbsp;&nbsp; ★ 5 STARS &nbsp;&nbsp; ✦ ON TIME EVERY TIME &nbsp;&nbsp; ★ NO HIDDEN FEES &nbsp;&nbsp; ✦ CAREFUL WITH EVERYTHING &nbsp;&nbsp; ★ FAST &amp; FRIENDLY &nbsp;&nbsp; ✦ BEST MOVERS IN SASKATOON &nbsp;&nbsp; ★ WOULD RECOMMEND &nbsp;&nbsp; ✦ 5 STARS &nbsp;&nbsp;
+  </div>
+</div>
+
+<!-- FILTER + REVIEWS -->
+<section class="reviews-section">
+  <h2 class="section-label" style="padding-top:2rem;">ALL REVIEWS</h2>
+  <p class="section-sub">Filter by service type</p>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">ALL</button>
+    <button class="filter-btn" data-filter="residential">HOME MOVES</button>
+    <button class="filter-btn" data-filter="office">OFFICE MOVES</button>
+    <button class="filter-btn" data-filter="packing">PACKING</button>
+    <button class="filter-btn" data-filter="sameday">SAME-DAY</button>
+    <button class="filter-btn" data-filter="furniture">FURNITURE</button>
+    <button class="filter-btn" data-filter="longdistance">LONG DISTANCE</button>
+  </div>
+
+  <div class="reviews-grid" id="reviewsGrid" style="margin-top:2rem;">
+
+    <div class="review-card" data-service="residential">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-yellow">DM</div>
+          <div>
+            <div class="reviewer-name">DEREK M.</div>
+            <div class="reviewer-location">Nutana, Saskatoon</div>
+          </div>
+        </div>
+        <span class="review-platform google">GOOGLE</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">3-BEDROOM HOME MOVE</span>
+      <blockquote>"Showed up exactly on time, moved a 3-bedroom house in under 5 hours. Not a single scratch anywhere. These guys are the real deal — fast, careful, and friendly the whole time."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="sameday">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-red">SK</div>
+          <div>
+            <div class="reviewer-name">SARAH K.</div>
+            <div class="reviewer-location">Stonebridge, Saskatoon</div>
+          </div>
+        </div>
+        <span class="review-platform google">GOOGLE</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">SAME-DAY MOVE</span>
+      <blockquote>"Called them at 9am for a same-day move because my previous movers bailed. They were there by 1pm and done by 4. Honestly saved my life — my lease ended that day. Cannot recommend enough."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="residential">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-blue">MT</div>
+          <div>
+            <div class="reviewer-name">MIKE T.</div>
+            <div class="reviewer-location">Broadway, Saskatoon</div>
+          </div>
+        </div>
+        <span class="review-platform facebook">FACEBOOK</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">2-BEDROOM HOME MOVE</span>
+      <blockquote>"Used two other companies before and always got hit with surprise fees at the end. Looney quoted me $480 and I paid $480. Simple as that. The crew was great too — efficient and careful."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="office">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-green">JR</div>
+          <div>
+            <div class="reviewer-name">JESSICA R.</div>
+            <div class="reviewer-location">Downtown Saskatoon</div>
+          </div>
+        </div>
+        <span class="review-platform google">GOOGLE</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">OFFICE MOVE</span>
+      <blockquote>"They moved our entire office overnight so we didn't lose a single workday. Professional, fast, and way cheaper than the big company we got a quote from. Everything was labeled and set up exactly where we asked."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="packing">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-purple">AL</div>
+          <div>
+            <div class="reviewer-name">AMY L.</div>
+            <div class="reviewer-location">Silverspring, Saskatoon</div>
+          </div>
+        </div>
+        <span class="review-platform google">GOOGLE</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">PACKING + HOME MOVE</span>
+      <blockquote>"Added the packing service and I'm so glad I did. They packed my entire kitchen in an hour — everything wrapped properly, boxes labeled by room. Nothing broke. Unpacking was a breeze."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="furniture">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-yellow">BK</div>
+          <div>
+            <div class="reviewer-name">BRAD K.</div>
+            <div class="reviewer-location">Eastview, Saskatoon</div>
+          </div>
+        </div>
+        <span class="review-platform facebook">FACEBOOK</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">FURNITURE DELIVERY</span>
+      <blockquote>"Needed a couch and two dressers picked up from Facebook Marketplace and delivered to my place. Called Looney, they came next morning. Quick, easy, and no drama. Will use again for sure."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="residential">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-blue">TB</div>
+          <div>
+            <div class="reviewer-name">TYLER B.</div>
+            <div class="reviewer-location">Caswell Hill, Saskatoon</div>
+          </div>
+        </div>
+        <span class="review-platform google">GOOGLE</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">1-BEDROOM HOME MOVE</span>
+      <blockquote>"Quote came back in 2 hours and they stuck to it exactly. Crew was energetic and actually seemed to enjoy the job — good vibes all morning. Moved my 1 bed in about 2.5 hours flat."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="longdistance">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-red">CN</div>
+          <div>
+            <div class="reviewer-name">CHRIS N.</div>
+            <div class="reviewer-location">Saskatoon → Regina</div>
+          </div>
+        </div>
+        <span class="review-platform google">GOOGLE</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">LONG DISTANCE MOVE</span>
+      <blockquote>"Moved from Saskatoon to Regina and was nervous about the price. They gave me a flat rate, no surprise charges on arrival. Everything arrived safe and the crew was communicative the entire way."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="residential">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-green">LP</div>
+          <div>
+            <div class="reviewer-name">LINDA P.</div>
+            <div class="reviewer-location">Confederation Park</div>
+          </div>
+        </div>
+        <span class="review-platform facebook">FACEBOOK</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">4-BEDROOM HOME MOVE</span>
+      <blockquote>"We have a lot of stuff — 4 bedrooms, a full basement, antiques. They handled everything carefully, wrapped all the fragile pieces without being asked, and stayed professional the whole day. Truly outstanding."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="sameday">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-purple">RW</div>
+          <div>
+            <div class="reviewer-name">RYAN W.</div>
+            <div class="reviewer-location">Varsity View, Saskatoon</div>
+          </div>
+        </div>
+        <span class="review-platform google">GOOGLE</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">SAME-DAY MOVE</span>
+      <blockquote>"Emergency situation — needed to be out of my place the same day. Looney picked up immediately, confirmed a slot, and showed up within 3 hours. Studio apartment done in under 2 hours. Incredible."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="office">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-yellow">KH</div>
+          <div>
+            <div class="reviewer-name">KAREN H.</div>
+            <div class="reviewer-location">Saskatoon, SK</div>
+          </div>
+        </div>
+        <span class="review-platform google">GOOGLE</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">SMALL OFFICE MOVE</span>
+      <blockquote>"Relocated our small dental office on a Saturday so we could open Monday. Every piece of equipment was wrapped and handled carefully. Zero damage, zero issues. These guys know what they're doing."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+    <div class="review-card" data-service="furniture">
+      <div class="review-header">
+        <div class="reviewer-info">
+          <div class="reviewer-avatar av-blue">ZM</div>
+          <div>
+            <div class="reviewer-name">ZOE M.</div>
+            <div class="reviewer-location">Sutherland, Saskatoon</div>
+          </div>
+        </div>
+        <span class="review-platform facebook">FACEBOOK</span>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <span class="review-service-tag">FURNITURE ASSEMBLY</span>
+      <blockquote>"Just moved into a new place and needed a full bedroom set assembled — bed frame, wardrobe, two nightstands. They came the next day and had it all done in about 90 minutes. Way better than doing it myself."</blockquote>
+      <div class="speech-tail" aria-hidden="true"></div>
+    </div>
+
+  </div>
+
+  <div class="load-more-wrap" id="loadMoreWrap">
+    <button class="btn-secondary" id="loadMoreBtn" onclick="loadMore()">LOAD MORE REVIEWS ↓</button>
+  </div>
+</section>
+
+<!-- LEAVE A REVIEW -->
+<section class="leave-review" id="leave-review">
+  <h2>MOVED WITH US?</h2>
+  <p>We'd love to hear about it. Honest reviews help other Saskatoon families find the right crew — and they help us keep raising the bar.</p>
+  <div class="platform-btns">
+    <a href="#" class="platform-btn google">★ REVIEW US ON GOOGLE</a>
+    <a href="#" class="platform-btn facebook">★ REVIEW US ON FACEBOOK</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>READY TO ADD YOUR OWN?</h2>
+  <p>Book your move today and we'll give you something worth writing about.</p>
+  <div class="cta-btns">
+    <a href="freequote.html"   class="btn-primary">GET A FREE QUOTE →</a>
+    <a href="tel:3062229165"   class="btn-secondary" style="background:transparent; color:var(--yellow); border-color:var(--yellow); box-shadow:5px 5px 0 rgba(255,215,0,0.3);">📞 (306) 222-9165</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">LOONEY MOVERS</span>
+      <p>Saskatoon's most reliable (and most entertaining) moving crew. We show up on time, handle your stuff with care, and don't charge you surprise fees. That's the Looney promise.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">FACEBOOK</a>
+        <a href="#" class="social-link">GOOGLE</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>PAGES</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="whyus.html">Why Us</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="freequote.html">Get a Quote</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>CONTACT US</h4>
+      <ul class="footer-contact">
+        <li><span class="icon">📞</span><span><a href="tel:3062229165">(306) 222-9165</a></span></li>
+        <li><span class="icon">✉️</span><span><a href="mailto:looneymovers.sk@gmail.com">looneymovers.sk@gmail.com</a></span></li>
+        <li><span class="icon">📍</span><span>Saskatoon, Saskatchewan</span></li>
+        <li><span class="icon">🚛</span><span>Serving Saskatoon &amp; surrounding areas</span></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>HOURS</h4>
+      <ul class="footer-hours">
+        <li><span class="day">Mon – Fri</span><span class="time">7am – 8pm</span></li>
+        <li><span class="day">Saturday</span><span class="time">8am – 6pm</span></li>
+        <li><span class="day">Sunday</span><span class="time">9am – 4pm</span></li>
+        <li><span class="day">Holidays</span><span class="time">By Request</span></li>
+      </ul>
+      <div style="margin-top:1.2rem;">
+        <a href="freequote.html" class="btn-primary" style="font-size:1rem; padding:10px 20px;">BOOK NOW →</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Looney Movers · Saskatoon, SK · All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="policy.html">Privacy Policy</a>
+      <a href="policy.html">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.review-card').forEach(card => {
+        const show = filter === 'all' || card.dataset.service === filter;
+        card.classList.toggle('hidden', !show);
+      });
+      // Hide load more if filtering
+      document.getElementById('loadMoreWrap').style.display = filter === 'all' ? 'block' : 'none';
+    });
+  });
+
+  // Load more — all cards visible by default, button just scrolls to leave-review
+  document.getElementById('loadMoreBtn').addEventListener('click', () => {
+    document.getElementById('loadMoreWrap').style.display = 'none';
+  });
+  function loadMore() {
+    document.getElementById('loadMoreWrap').style.display = 'none';
+  }
+</script>
+</body>
+</html>

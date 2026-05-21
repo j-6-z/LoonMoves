@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Quote — Looney Movers Saskatoon</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --red: #E8192C;
+  --yellow: #FFD700;
+  --black: #1a1a1a;
+  --white: #FFFEF0;
+  --orange: #FF6B00;
+  --sky: #87CEEB;
+  --green: #5D8A3C;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Comic Neue', cursive;
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  background: var(--red);
+  border-bottom: 4px solid var(--black);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--black);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-logo span { color: var(--white); }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a {
+  font-family: 'Bangers', cursive;
+  font-size: 1.15rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: color 0.1s;
+  white-space: nowrap;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--yellow); }
+.nav-cta {
+  background: var(--yellow) !important;
+  color: var(--black) !important;
+  padding: 8px 18px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 3px 3px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.nav-cta:hover { transform: translate(-2px,-2px) !important; box-shadow: 5px 5px 0 var(--black) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+  z-index: 1100;
+}
+.hamburger span { display: block; width: 28px; height: 3px; background: var(--white); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 70px; left: 0; right: 0; bottom: 0;
+  background: var(--red);
+  border-top: 4px solid var(--black);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  letter-spacing: 4px;
+  color: var(--white);
+  text-decoration: none;
+  text-shadow: 3px 3px 0 var(--black);
+}
+.mobile-menu a:hover { color: var(--yellow); }
+.mobile-menu .mob-cta {
+  background: var(--yellow);
+  color: var(--black) !important;
+  padding: 14px 36px;
+  border: 3px solid var(--black);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 5px 5px 0 var(--black);
+  text-shadow: none !important;
+}
+
+/* ===== HERO ===== */
+.page-hero {
+  background: var(--black);
+  border-bottom: 4px solid var(--yellow);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: 'FREE!';
+  position: absolute;
+  font-family: 'Bangers', cursive;
+  font-size: clamp(6rem, 20vw, 14rem);
+  color: rgba(255,215,0,0.05);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%) rotate(-8deg);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.page-hero-eyebrow {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  color: var(--orange);
+  background: var(--yellow);
+  display: inline-block;
+  padding: 4px 16px;
+  margin-bottom: 1rem;
+  border: 2px solid var(--black);
+}
+.page-hero h1 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(3rem, 9vw, 6rem);
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 5px 5px 0 var(--red);
+  line-height: 0.95;
+  margin-bottom: 1rem;
+}
+.page-hero h1 span { color: var(--white); text-shadow: 4px 4px 0 var(--black); }
+.page-hero p {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(255,255,240,0.75);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== TRUST BAR ===== */
+.trust-bar {
+  background: var(--yellow);
+  border-bottom: 4px solid var(--black);
+  padding: 0.85rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.trust-item .dot { color: var(--red); font-size: 1.2rem; }
+
+/* ===== FORM LAYOUT ===== */
+.form-section {
+  padding: 4rem 2rem 5rem;
+  background: var(--white);
+}
+
+.form-wrap {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* ===== THE FORM ===== */
+.quote-form-card {
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 20px;
+  box-shadow: 8px 8px 0 var(--black);
+  overflow: hidden;
+}
+.form-header {
+  background: var(--red);
+  border-bottom: 3px solid var(--black);
+  padding: 1.5rem 2rem;
+}
+.form-header h2 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 var(--black);
+}
+.form-header p {
+  font-size: 0.88rem;
+  color: rgba(255,255,240,0.75);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.form-body { padding: 2rem; display: flex; flex-direction: column; gap: 1.4rem; }
+
+/* Step indicators */
+.step-tabs {
+  display: flex;
+  gap: 0;
+  border: 3px solid var(--black);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.step-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px 8px;
+  font-family: 'Bangers', cursive;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: #888;
+  background: #f5f5f0;
+  border-right: 2px solid var(--black);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+}
+.step-tab:last-child { border-right: none; }
+.step-tab.active { background: var(--yellow); color: var(--black); }
+.step-tab.done   { background: var(--green); color: white; }
+
+/* Form steps */
+.form-step { display: none; flex-direction: column; gap: 1.2rem; }
+.form-step.active { display: flex; }
+
+/* Field groups */
+.field-group { display: flex; flex-direction: column; gap: 5px; }
+.field-row   { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+label {
+  font-family: 'Bangers', cursive;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  color: var(--black);
+}
+.label-hint {
+  font-family: 'Comic Neue', cursive;
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px 16px;
+  border: 3px solid var(--black);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--black);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(232,25,44,0.12);
+}
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231a1a1a' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+textarea { resize: vertical; min-height: 90px; }
+
+/* Move type selector */
+.move-type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+.move-type-btn {
+  border: 3px solid var(--black);
+  border-radius: 12px;
+  padding: 1rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  background: var(--white);
+  transition: background 0.15s, transform 0.1s, box-shadow 0.1s;
+  box-shadow: 3px 3px 0 var(--black);
+  user-select: none;
+}
+.move-type-btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--black); }
+.move-type-btn.selected { background: var(--yellow); }
+.move-type-btn .mt-icon { font-size: 1.8rem; display: block; margin-bottom: 4px; }
+.move-type-btn .mt-label { font-family: 'Bangers', cursive; font-size: 0.9rem; letter-spacing: 1px; color: var(--black); }
+
+/* Checkbox group */
+.check-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.check-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 3px solid var(--black);
+  border-radius: 4px;
+  accent-color: var(--red);
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Nav buttons */
+.form-nav { display: flex; gap: 1rem; justify-content: space-between; margin-top: 0.5rem; }
+.btn-next {
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  background: var(--red);
+  color: var(--white);
+  border: 3px solid var(--black);
+  padding: 12px 28px;
+  cursor: pointer;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 4px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+  flex: 1;
+}
+.btn-next:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--black); }
+.btn-back {
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  background: transparent;
+  color: var(--black);
+  border: 3px solid var(--black);
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 4px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.btn-back:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--black); }
+.btn-submit {
+  font-family: 'Bangers', cursive;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  background: var(--green);
+  color: var(--white);
+  border: 3px solid var(--black);
+  padding: 14px 28px;
+  cursor: pointer;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  box-shadow: 4px 4px 0 var(--black);
+  transition: transform 0.1s, box-shadow 0.1s;
+  flex: 1;
+  animation: pulse-btn 2s ease-in-out infinite;
+}
+.btn-submit:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--black); animation: none; }
+@keyframes pulse-btn { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+
+/* Success state */
+.form-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.success-icon { font-size: 4rem; animation: icon-bounce 1s ease-in-out infinite; }
+@keyframes icon-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.form-success h3 {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  color: var(--green);
+  text-shadow: 2px 2px 0 var(--black);
+}
+.form-success p { font-size: 0.95rem; font-weight: 700; color: #444; line-height: 1.6; max-width: 320px; }
+
+/* ===== SIDEBAR ===== */
+.sidebar { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 90px; }
+
+.sidebar-card {
+  background: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 16px;
+  box-shadow: 5px 5px 0 var(--black);
+  overflow: hidden;
+}
+.sidebar-card-header {
+  padding: 1rem 1.25rem 0.75rem;
+  border-bottom: 3px solid var(--black);
+  font-family: 'Bangers', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: var(--black);
+}
+.sidebar-card-header.yellow-bg { background: var(--yellow); }
+.sidebar-card-header.red-bg    { background: var(--red); color: var(--white); text-shadow: 1px 1px 0 var(--black); }
+.sidebar-card-header.black-bg  { background: var(--black); color: var(--yellow); }
+
+.sidebar-card-body { padding: 1.25rem; }
+
+/* Call card */
+.call-big {
+  font-family: 'Bangers', cursive;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: var(--red);
+  text-shadow: 2px 2px 0 var(--black);
+  display: block;
+  text-decoration: none;
+  margin-bottom: 0.4rem;
+  transition: opacity 0.15s;
+}
+.call-big:hover { opacity: 0.8; }
+.call-hours { font-size: 0.82rem; color: #666; font-weight: 700; line-height: 1.5; }
+
+/* What to expect */
+.expect-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.expect-list li {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #333;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+.expect-list li .num {
+  font-family: 'Bangers', cursive;
+  font-size: 1rem;
+  color: var(--red);
+  flex-shrink: 0;
+  min-width: 18px;
+}
+
+/* Reviews mini */
+.mini-review { border-bottom: 2px solid rgba(0,0,0,0.07); padding-bottom: 0.9rem; margin-bottom: 0.9rem; }
+.mini-review:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.mini-stars { color: var(--yellow); font-size: 0.85rem; margin-bottom: 3px; }
+.mini-review p { font-size: 0.82rem; font-weight: 700; color: #333; font-style: italic; line-height: 1.4; margin-bottom: 4px; }
+.mini-review .name { font-size: 0.75rem; color: #888; font-weight: 700; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--black);
+  border-top: 5px solid var(--yellow);
+  color: var(--white);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 3rem;
+}
+.footer-brand .footer-logo {
+  font-family: 'Bangers', cursive;
+  font-size: 2.4rem;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-shadow: 3px 3px 0 var(--red);
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.footer-brand p { font-size: 0.9rem; color: rgba(255,255,240,0.65); line-height: 1.6; max-width: 280px; margin-bottom: 1.2rem; }
+.footer-brand .social-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.social-link {
+  font-family: 'Bangers', cursive;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  background: rgba(255,215,0,0.12);
+  color: var(--yellow);
+  border: 2px solid rgba(255,215,0,0.35);
+  padding: 6px 14px;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.social-link:hover { background: rgba(255,215,0,0.25); border-color: var(--yellow); }
+.footer-col h4 {
+  font-family: 'Bangers', cursive;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--yellow);
+  text-shadow: 2px 2px 0 var(--red);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(255,215,0,0.2);
+  padding-bottom: 0.5rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col ul a { font-size: 0.88rem; color: rgba(255,255,240,0.65); text-decoration: none; transition: color 0.15s; display: flex; align-items: center; gap: 6px; }
+.footer-col ul a::before { content: '→'; color: var(--red); font-weight: 700; }
+.footer-col ul a:hover { color: var(--yellow); }
+.footer-contact { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.footer-contact li { font-size: 0.88rem; color: rgba(255,255,240,0.65); display: flex; gap: 8px; align-items: flex-start; line-height: 1.4; }
+.footer-contact .icon { color: var(--yellow); flex-shrink: 0; }
+.footer-contact a { color: rgba(255,255,240,0.65); text-decoration: none; }
+.footer-contact a:hover { color: var(--yellow); }
+.footer-hours { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-hours li { font-size: 0.85rem; color: rgba(255,255,240,0.65); display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.footer-hours .day  { color: rgba(255,255,240,0.45); }
+.footer-hours .time { color: rgba(255,255,240,0.8); font-weight: 700; }
+.footer-bottom {
+  border-top: 2px solid rgba(255,255,255,0.08);
+  padding: 1.4rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,240,0.4); }
+.footer-legal { display: flex; gap: 1.5rem; }
+.footer-legal a { font-size: 0.8rem; color: rgba(255,255,240,0.4); text-decoration: none; }
+.footer-legal a:hover { color: var(--yellow); }
+
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .form-wrap { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .page-hero { padding: 2.5rem 1.25rem 2rem; }
+  .trust-bar { gap: 1rem; padding: 0.75rem 1rem; }
+  .trust-item { font-size: 0.85rem; }
+  .form-section { padding: 2.5rem 1.25rem 3.5rem; }
+  .field-row { grid-template-columns: 1fr; }
+  .move-type-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 3rem 1.25rem 2rem; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; padding: 1.2rem 1.25rem; }
+}
+@media (max-width: 480px) {
+  nav { padding: 0 1rem; }
+  .nav-logo { font-size: 1.6rem; }
+  .move-type-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-brand { grid-column: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">LOONEY<span>MOVERS</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="whyus.html">Why Us</a></li>
+    <li><a href="reviews.html">Reviews</a></li>
+    <li><a href="freequote.html" class="active nav-cta">FREE QUOTE</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="services.html"      class="mob-link">Services</a>
+  <a href="whyus.html"         class="mob-link">Why Us</a>
+  <a href="reviews.html" class="mob-link">Reviews</a>
+  <a href="freequote.html"     class="mob-cta mob-link">FREE QUOTE</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-eyebrow">★ NO OBLIGATION ★</div>
+  <h1>GET YOUR<br><span>FREE QUOTE</span></h1>
+  <p>Tell us about your move and we'll get back to you fast with a flat-rate price. No surprises, no pressure.</p>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="dot">★</span> Response within 24hrs</div>
+  <div class="trust-item"><span class="dot">★</span> Flat rate — no hidden fees</div>
+  <div class="trust-item"><span class="dot">★</span> Fully insured crew</div>
+  <div class="trust-item"><span class="dot">★</span> Local Saskatoon movers</div>
+</div>
+
+<!-- FORM + SIDEBAR -->
+<section class="form-section">
+  <div class="form-wrap">
+
+    <!-- FORM -->
+    <div class="quote-form-card">
+      <div class="form-header">
+        <h2>TELL US ABOUT YOUR MOVE</h2>
+        <p>Fill in the details below — takes about 2 minutes</p>
+      </div>
+      <div class="form-body">
+
+        <!-- Step tabs -->
+        <div class="step-tabs">
+          <div class="step-tab active" id="tab-1">1. MOVE TYPE</div>
+          <div class="step-tab"        id="tab-2">2. DETAILS</div>
+          <div class="step-tab"        id="tab-3">3. CONTACT</div>
+        </div>
+
+        <!-- Step 1: Move Type -->
+        <div class="form-step active" id="step-1">
+          <div class="field-group">
+            <label>WHAT ARE YOU MOVING? <span class="label-hint">(pick one)</span></label>
+            <div class="move-type-grid">
+              <div class="move-type-btn selected" data-type="home">
+                <span class="mt-icon">🏠</span>
+                <span class="mt-label">HOME / APARTMENT</span>
+              </div>
+              <div class="move-type-btn" data-type="office">
+                <span class="mt-icon">🏢</span>
+                <span class="mt-label">OFFICE / BUSINESS</span>
+              </div>
+              <div class="move-type-btn" data-type="furniture">
+                <span class="mt-icon">🛋️</span>
+                <span class="mt-label">FURNITURE ONLY</span>
+              </div>
+              <div class="move-type-btn" data-type="other">
+                <span class="mt-icon">📦</span>
+                <span class="mt-label">OTHER / NOT SURE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="home-size">HOME SIZE</label>
+            <select id="home-size">
+              <option value="">Select size...</option>
+              <option>Studio / Bachelor</option>
+              <option>1 Bedroom</option>
+              <option>2 Bedrooms</option>
+              <option>3 Bedrooms</option>
+              <option>4+ Bedrooms</option>
+              <option>Office / Commercial</option>
+              <option>Just a few items</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="move-from">MOVING FROM</label>
+              <input type="text" id="move-from" placeholder="e.g. Stonebridge, SK" />
+            </div>
+            <div class="field-group">
+              <label for="move-to">MOVING TO</label>
+              <input type="text" id="move-to" placeholder="e.g. Broadway, SK" />
+            </div>
+          </div>
+
+          <div class="form-nav">
+            <button class="btn-next" onclick="goToStep(2)">NEXT: MOVE DETAILS →</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Details -->
+        <div class="form-step" id="step-2">
+          <div class="field-row">
+            <div class="field-group">
+              <label for="move-date">PREFERRED MOVE DATE</label>
+              <input type="date" id="move-date" />
+            </div>
+            <div class="field-group">
+              <label for="move-time">PREFERRED TIME</label>
+              <select id="move-time">
+                <option value="">Select time...</option>
+                <option>Early morning (7–9am)</option>
+                <option>Morning (9am–12pm)</option>
+                <option>Afternoon (12–4pm)</option>
+                <option>Evening (4–7pm)</option>
+                <option>Flexible</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>ADD-ON SERVICES <span class="label-hint">(check all that apply)</span></label>
+            <div class="check-group">
+              <label class="check-item">
+                <input type="checkbox" /> Packing &amp; unpacking service
+              </label>
+              <label class="check-item">
+                <input type="checkbox" /> Furniture disassembly &amp; reassembly
+              </label>
+              <label class="check-item">
+                <input type="checkbox" /> Junk removal / items to dispose of
+              </label>
+              <label class="check-item">
+                <input type="checkbox" /> Specialty / fragile items (piano, antiques, artwork)
+              </label>
+              <label class="check-item">
+                <input type="checkbox" /> Packing supplies / boxes needed
+              </label>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="floors">FLOOR ACCESS <span class="label-hint">(both locations)</span></label>
+            <select id="floors">
+              <option value="">Select...</option>
+              <option>Ground floor only</option>
+              <option>1 location has stairs / elevator</option>
+              <option>Both locations have stairs / elevator</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="notes">ANYTHING ELSE WE SHOULD KNOW? <span class="label-hint">(optional)</span></label>
+            <textarea id="notes" placeholder="e.g. I have a large sectional, tight staircase at pickup, need help with boxes..."></textarea>
+          </div>
+
+          <div class="form-nav">
+            <button class="btn-back" onclick="goToStep(1)">← BACK</button>
+            <button class="btn-next" onclick="goToStep(3)">NEXT: CONTACT INFO →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Contact -->
+        <div class="form-step" id="step-3">
+          <div class="field-row">
+            <div class="field-group">
+              <label for="fname">FIRST NAME</label>
+              <input type="text" id="fname" placeholder="e.g. Jay" />
+            </div>
+            <div class="field-group">
+              <label for="lname">LAST NAME</label>
+              <input type="text" id="lname" placeholder="e.g. Smith" />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="phone">PHONE NUMBER</label>
+            <input type="tel" id="phone" placeholder="e.g. (306) 555-0100" />
+          </div>
+
+          <div class="field-group">
+            <label for="email">EMAIL ADDRESS <span class="label-hint">(optional)</span></label>
+            <input type="email" id="email" placeholder="e.g. you@email.com" />
+          </div>
+
+          <div class="field-group">
+            <label for="contact-pref">BEST WAY TO REACH YOU</label>
+            <select id="contact-pref">
+              <option>Phone call</option>
+              <option>Text message</option>
+              <option>Email</option>
+              <option>Any of the above</option>
+            </select>
+          </div>
+
+          <div class="form-nav">
+            <button class="btn-back" onclick="goToStep(2)">← BACK</button>
+            <button class="btn-submit" onclick="submitForm()">🚛 SEND MY QUOTE REQUEST</button>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <div class="form-success" id="form-success">
+          <span class="success-icon">🎉</span>
+          <h3>YOU'RE ALL SET!</h3>
+          <p>We got your request and we'll be in touch within 24 hours — usually way faster. Keep your phone close!</p>
+          <p style="margin-top:0.5rem; color:#888;">In the meantime, feel free to call us directly at <strong><a href="tel:3062229165" style="color:var(--red)">(306) 222-9165</a></strong></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Call us -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header red-bg">📞 RATHER CALL? WE ANSWER.</div>
+        <div class="sidebar-card-body">
+          <a href="tel:3062229165" class="call-big">(306) 222-9165</a>
+          <p class="call-hours">
+            Mon–Fri: 7am – 8pm<br>
+            Saturday: 8am – 6pm<br>
+            Sunday: 9am – 4pm<br>
+            Holidays: By request
+          </p>
+        </div>
+      </div>
+
+      <!-- What to expect -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header yellow-bg">WHAT HAPPENS NEXT?</div>
+        <div class="sidebar-card-body">
+          <ol class="expect-list">
+            <li><span class="num">1.</span> We review your request (usually within a few hours)</li>
+            <li><span class="num">2.</span> We call or text you back with a flat-rate quote</li>
+            <li><span class="num">3.</span> You confirm the date — no deposit required</li>
+            <li><span class="num">4.</span> Our crew shows up ready to go</li>
+            <li><span class="num">5.</span> You pay what was quoted. Done.</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Mini reviews -->
+      <div class="sidebar-card">
+        <div class="sidebar-card-header black-bg">★ WHAT PEOPLE SAY</div>
+        <div class="sidebar-card-body">
+          <div class="mini-review">
+            <div class="mini-stars">★★★★★</div>
+            <p>"Quote came back in 2 hours and they stuck to it exactly."</p>
+            <span class="name">— TYLER B., CASWELL HILL</span>
+          </div>
+          <div class="mini-review">
+            <div class="mini-stars">★★★★★</div>
+            <p>"Super easy process. Filled out the form, got a call same day, moved the next morning."</p>
+            <span class="name">— AMY L., SILVERSPRING</span>
+          </div>
+          <div class="mini-review">
+            <div class="mini-stars">★★★★★</div>
+            <p>"No hidden fees. They quoted $360 and I paid $360. Refreshing."</p>
+            <span class="name">— BRAD K., EASTVIEW</span>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">LOONEY MOVERS</span>
+      <p>Saskatoon's most reliable (and most entertaining) moving crew. We show up on time, handle your stuff with care, and don't charge you surprise fees. That's the Looney promise.</p>
+      <div class="social-links">
+        <a href="#" class="social-link">FACEBOOK</a>
+        <a href="#" class="social-link">GOOGLE</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>PAGES</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="whyus.html">Why Us</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="freequote.html">Get a Quote</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>CONTACT US</h4>
+      <ul class="footer-contact">
+        <li><span class="icon">📞</span><span><a href="tel:3062229165">(306) 222-9165</a></span></li>
+        <li><span class="icon">✉️</span><span><a href="mailto:looneymovers.sk@gmail.com">looneymovers.sk@gmail.com</a></span></li>
+        <li><span class="icon">📍</span><span>Saskatoon, Saskatchewan</span></li>
+        <li><span class="icon">🚛</span><span>Serving Saskatoon &amp; surrounding areas</span></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>HOURS</h4>
+      <ul class="footer-hours">
+        <li><span class="day">Mon – Fri</span><span class="time">7am – 8pm</span></li>
+        <li><span class="day">Saturday</span><span class="time">8am – 6pm</span></li>
+        <li><span class="day">Sunday</span><span class="time">9am – 4pm</span></li>
+        <li><span class="day">Holidays</span><span class="time">By Request</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Looney Movers · Saskatoon, SK · All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="policy.html">Privacy Policy</a>
+      <a href="policy.html">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('.mob-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Move type selector
+  document.querySelectorAll('.move-type-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.move-type-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // Step navigation
+  function goToStep(n) {
+    for (let i = 1; i <= 3; i++) {
+      const step = document.getElementById('step-' + i);
+      const tab  = document.getElementById('tab-' + i);
+      step.classList.toggle('active', i === n);
+      tab.classList.remove('active', 'done');
+      if (i === n)  tab.classList.add('active');
+      if (i < n)    tab.classList.add('done');
+    }
+    document.querySelector('.quote-form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Submit
+  function submitForm() {
+    for (let i = 1; i <= 3; i++) {
+      document.getElementById('step-' + i).classList.remove('active');
+      const tab = document.getElementById('tab-' + i);
+      tab.classList.remove('active');
+      tab.classList.add('done');
+    }
+    document.getElementById('form-success').style.display = 'flex';
+    document.querySelector('.quote-form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
+</body>
+</html>
