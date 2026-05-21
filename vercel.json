@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/",           "dest": "/looney_movers.html" },
+    { "src": "/services",   "dest": "/services.html" },
+    { "src": "/why-us",     "dest": "/whyus.html" },
+    { "src": "/reviews",    "dest": "/reviews.html" },
+    { "src": "/free-quote", "dest": "/freequote.html" },
+    { "src": "/policy",     "dest": "/policy.html" },
+    { "src": "/404",        "dest": "/404.html" },
+    { "handle": "error" },
+    { "status": 404, "dest": "/404.html" }
+  ]
+}
